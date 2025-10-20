@@ -37,18 +37,6 @@ namespace LineraOrchestrator.Services
             throw new InvalidOperationException("Failed to get PID of background process.");
         }
 
-        public void StopProcess(int pid)
-        {
-            try
-            {
-                Process.GetProcessById(pid).Kill();
-            }
-            catch (ArgumentException)
-            {
-                // process already stopped
-            }
-        }
-
         // ----- CHÍNH: chạy linera CLI mà KHÔNG qua shell, từng arg riêng -----
         // Sử dụng params string[] args: hãy gọi _cli.RunAndCaptureOutputAsync("publish-module", path1, path2, "--json-argument", json)
         // Thiết lập env cho tiến trình con trực tiếp: RunAndCaptureOutputAsync
@@ -56,51 +44,69 @@ namespace LineraOrchestrator.Services
         // vì export trong shell khác không tự lan sang tiến trình dotnet.
         public async Task<string> RunAndCaptureOutputAsync(params string[] args)
         {
-            var psi = new ProcessStartInfo
+            const int maxRetries = 3;
+            for (int attempt = 1; attempt <= maxRetries; attempt++)
             {
-                FileName = _config.LineraCliPath,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+                var psi = new ProcessStartInfo
+                {
+                    FileName = _config.LineraCliPath,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                foreach (var kv in Environment.GetEnvironmentVariables().Cast<System.Collections.DictionaryEntry>())
+                {
+                    psi.Environment[kv.Key.ToString() ?? ""] = kv.Value?.ToString() ?? "";
+                }
 
-            foreach (var a in args)
-                psi.ArgumentList.Add(a);
+                foreach (var a in args)
+                    psi.ArgumentList.Add(a);
 
-            if (!string.IsNullOrEmpty(_config.LineraWallet))
-                psi.Environment["LINERA_WALLET"] = _config.LineraWallet;
-            if (!string.IsNullOrEmpty(_config.LineraStorage))
-                psi.Environment["LINERA_STORAGE"] = _config.LineraStorage;
-            if (!string.IsNullOrEmpty(_config.LineraKeystore))
-                psi.Environment["LINERA_KEYSTORE"] = _config.LineraKeystore;
+                if (!string.IsNullOrEmpty(_config.LineraWallet))
+                    psi.Environment["LINERA_WALLET"] = _config.LineraWallet;
+                if (!string.IsNullOrEmpty(_config.LineraKeystore))
+                    psi.Environment["LINERA_KEYSTORE"] = _config.LineraKeystore;
+                if (!string.IsNullOrEmpty(_config.LineraStorage))
+                    psi.Environment["LINERA_STORAGE"] = _config.LineraStorage;
 
-            var process = new Process { StartInfo = psi };
-            var sb = new StringBuilder();
-            var errSb = new StringBuilder();
+                var process = new Process { StartInfo = psi };
+                var sb = new StringBuilder();
+                var errSb = new StringBuilder();
 
-            process.OutputDataReceived += (s, e) => { if (e.Data != null) sb.AppendLine(e.Data); };
-            process.ErrorDataReceived += (s, e) => { if (e.Data != null) errSb.AppendLine(e.Data); };
+                process.OutputDataReceived += (s, e) => { if (e.Data != null) sb.AppendLine(e.Data); };
+                process.ErrorDataReceived += (s, e) => { if (e.Data != null) errSb.AppendLine(e.Data); };
 
-            process.Start();
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
 
-            await process.WaitForExitAsync();
+                await process.WaitForExitAsync();
 
-            if (process.ExitCode != 0)
-            {
-                var err = errSb.ToString();
-                var outp = sb.ToString();
-                Console.WriteLine($"Process exit code {process.ExitCode}");
+                string stdout = sb.ToString();
+                string stderr = errSb.ToString();
+                if (process.ExitCode == 0 && !string.IsNullOrWhiteSpace(stdout))
+                {
+                    return stdout.Trim();
+                }
+
+                // xử lý RocksDB lock
+                if (stderr.Contains("LOCK: Resource temporarily unavailable"))
+                {
+                    Console.WriteLine($"[WARN] Attempt {attempt}/{maxRetries} failed due to RocksDB lock. Waiting 3s before retry...");
+                    await Task.Delay(3000);
+                    continue; // thử lại vòng lặp
+                }
+
+                // lỗi khác thì throw ngay
+                Console.WriteLine($"[ERROR] linera exited with code {process.ExitCode}");
                 Console.WriteLine("STDERR:");
-                Console.WriteLine(err);
+                Console.WriteLine(stderr);
                 Console.WriteLine("STDOUT:");
-                Console.WriteLine(outp);
-                throw new InvalidOperationException($"linera exited with code {process.ExitCode}: {err}");
+                Console.WriteLine(stdout);
+                throw new InvalidOperationException($"linera exited with code {process.ExitCode}: {stderr}");
             }
-
-            return sb.ToString();
+            throw new InvalidOperationException($"linera failed after {maxRetries} retries (RocksDB lock not released).");
         }
 
         // Keep existing background-start helper which reads /tmp/linera_output.log
@@ -125,8 +131,9 @@ namespace LineraOrchestrator.Services
             _config.LineraNetPid = pid;
 
             string? wallet = null;
-            string? storage = null;
-            int retries = 60; // 30s
+            string? keystore = null;
+            string? storage = null;     
+            int retries = 30; // thử lại 30s
             while ((wallet == null || storage == null) && retries-- > 0)
             {
                 if (File.Exists("/tmp/linera_output.log"))
@@ -139,23 +146,27 @@ namespace LineraOrchestrator.Services
                             var match = System.Text.RegularExpressions.Regex.Match(line, @"export LINERA_WALLET=""([^""]+)""");
                             if (match.Success) wallet = match.Groups[1].Value;
                         }
+                        if (keystore == null && line.Contains("export LINERA_KEYSTORE"))
+                        {
+                            var match = System.Text.RegularExpressions.Regex.Match(line, @"export LINERA_KEYSTORE=""([^""]+)""");
+                            if (match.Success) keystore = match.Groups[1].Value;
+                        }
                         if (storage == null && line.Contains("export LINERA_STORAGE"))
                         {
                             var match = System.Text.RegularExpressions.Regex.Match(line, @"export LINERA_STORAGE=""([^""]+)""");
                             if (match.Success) storage = match.Groups[1].Value;
-                        }
+                        }  
                     }
                 }
                 await Task.Delay(500);
             }
-
+            // save to Linera env
             _config.LineraWallet = wallet;
-            _config.LineraStorage = storage;
-            _config.LineraKeystore = null;
+            _config.LineraKeystore = keystore;
+            _config.LineraStorage = storage;      
             return _config;
         }
         // Automatic Orchestrator Linera Services
-
         public async Task<int> StartLineraServiceInBackgroundAsync(int port = 8080)
         {
             string logFile = "/tmp/linera_service.log";
@@ -163,12 +174,17 @@ namespace LineraOrchestrator.Services
 
             var psi = new ProcessStartInfo
             {
-                FileName = "/bin/bash",
-                Arguments = $"-c \"nohup {_config.LineraCliPath} service --port {port} > {logFile} 2>&1 & echo $!\"",
+                FileName = _config.LineraCliPath, // trực tiếp linera executable
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
+
+            // args: service --port {port}
+            psi.ArgumentList.Add("service");
+            psi.ArgumentList.Add("--port");
+            psi.ArgumentList.Add(port.ToString());
 
             if (!string.IsNullOrEmpty(_config.LineraWallet))
                 psi.Environment["LINERA_WALLET"] = _config.LineraWallet;
@@ -178,50 +194,32 @@ namespace LineraOrchestrator.Services
                 psi.Environment["LINERA_KEYSTORE"] = _config.LineraKeystore;
 
             var process = new Process { StartInfo = psi };
+
+            // redirect output to log file manually
+            var stdoutSb = new StringBuilder();
+            var stderrSb = new StringBuilder();
+            process.OutputDataReceived += (s, e) => { if (e.Data != null) { stdoutSb.AppendLine(e.Data); File.AppendAllText(logFile, e.Data + Environment.NewLine); } };
+            process.ErrorDataReceived += (s, e) => { if (e.Data != null) { stderrSb.AppendLine(e.Data); File.AppendAllText(logFile, e.Data + Environment.NewLine); } };
+
             process.Start();
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
 
-            string pidStr = await process.StandardOutput.ReadToEndAsync();
-            if (!int.TryParse(pidStr?.Trim(), out int pid))
-                throw new InvalidOperationException("Không lấy được PID của linera service khi start background.");
+            // give a short moment for service to initialize and create GraphiQL lines
+            await Task.Delay(500);
 
-            _config.LineraServicePid = pid;
-
-            Console.WriteLine($"[DEBUG] Linera service started in background with PID={pid}, log={logFile}");
-
-            // Task nền theo dõi log để báo READY
-            _ = Task.Run(async () =>
+            // validate started
+            if (process.HasExited)
             {
-                try
-                {
-                    using var fs = new FileStream(logFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                    using var reader = new StreamReader(fs);
-                    while (true)
-                    {
-                        var line = await reader.ReadLineAsync();
-                        if (line == null)
-                        {
-                            await Task.Delay(500);
-                            continue;
-                        }
-                        if (line.Contains("GraphiQL IDE"))
-                        {
-                            Console.WriteLine($"[READY] Linera service is ready on port {port}");
-                            break;
-                        }
-                        if (line.Contains("error") || line.Contains("panic"))
-                        {
-                            Console.WriteLine($"[ERROR] Linera service failed: {line}");
-                            break;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[WARN] Readiness check failed: {ex.Message}");
-                }
-            });
+                var err = stderrSb.ToString();
+                var outp = stdoutSb.ToString();
+                Console.WriteLine("Linera service failed to start.");
+                Console.WriteLine("STDERR:", err, "STDOUT:", outp);
+                throw new InvalidOperationException($"Linera Service exited immediately: {err}");
+            }
 
-            return pid;
+            // return PID
+            return process.Id;
         }
     }
 }

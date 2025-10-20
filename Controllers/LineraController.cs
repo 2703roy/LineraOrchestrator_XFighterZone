@@ -1,10 +1,9 @@
-﻿//LineraOrchestratorService.cs
+﻿//LineraController.cs
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using LineraOrchestrator.Services;
 using LineraOrchestrator.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
+
 
 namespace LineraOrchestrator.Controllers
 {
@@ -13,7 +12,6 @@ namespace LineraOrchestrator.Controllers
     public class LineraController : ControllerBase
     {
         private readonly LineraOrchestratorService _svc;
-
         // Khởi tạo Controller với service Linera
         public LineraController(LineraOrchestratorService svc)
         {
@@ -22,23 +20,26 @@ namespace LineraOrchestrator.Controllers
 
         // API để khởi động Linera Node
         [HttpPost("start-linera-node")]
-        public async Task<IActionResult> StartLineraNet()
+        public async Task<IActionResult> StartLineraNode()
         {
             try
             {
-                var config = await _svc.StartLineraNetAsync();
+                var config = await _svc.StartLineraNodeAsync();
+                // Xác định chế độ hiện tại
+                var mode = config.UseRemoteTestnet ? "Conway (Remote Testnet)" : "Local Net Backup";
 
                 return Ok(new
                 {
                     success = true,
-                    message = "Linera Node đã thành công khởi động và các biến môi trường đã được trích xuất.",
+                    message = $"Linera Node đã thành công khởi động ở chế độ {mode} và các biến môi trường đã được trích xuất.",
                     linera_wallet = config.LineraWallet,
-                    linera_storage = config.LineraStorage,
                     linera_keystore = config.LineraKeystore,
-                     // thêm các ID hữu ích cho client
+                    linera_storage = config.LineraStorage,
                     xfighter_module_id = config.XFighterModuleId,
                     xfighter_app_id = config.XFighterAppId,
                     leaderboard_app_id = config.LeaderboardAppId,
+                    publisher_chain_id = config.PublisherChainId,
+                    tournament_app_id = config.TournamentAppId,
                     isReady = config.IsReady
 
                 });
@@ -49,91 +50,6 @@ namespace LineraOrchestrator.Controllers
             }
         }
 
-        // ===================== New endpoints moduleId and leaderboardAppId =====================
-        /// <summary>
-        /// Single endpoint that opens a new match chain and then creates an xfighter app on it.
-        /// Body must include.
-        /// </summary>
-        [HttpPost("open-and-create")]
-        public async Task<IActionResult> OpenAndCreate([FromBody] OpenAndCreateRequest req)
-        {
-            if (req == null) return BadRequest(new { success = false, error = "invalid_request", message = "Request body required." });
-
-            if (string.IsNullOrWhiteSpace(req.ModuleId))
-                return BadRequest(new { success = false, error = "missing_moduleId", message = "moduleId is required in the request body." });
-
-            if (string.IsNullOrWhiteSpace(req.LeaderboardAppId))
-                return BadRequest(new { success = false, error = "missing_leaderboardAppId", message = "leaderboardAppId is required in the request body." });
-
-            try
-            {
-                var (chainId, appId) = await _svc.OpenAndCreateWithServiceControlAsync(
-                    req.ModuleId,
-                    req.LeaderboardAppId,
-                    req.MatchId, // NEW: truyền matchId vào, truyền thẳng vào chainID Update 7 sep 25
-                    req.MaxRetries ?? 5,
-                    req.RetryDelayMs ?? 2000);
-
-                // matchId = chainId theo rule mới
-                var matchId = chainId;
-                return Ok(new { success = true, chainId, appId, matchId = req.MatchId ?? chainId });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new
-                {
-                    success = false,
-                    error = ex.Message,
-                    details = ex.InnerException?.Message
-                });
-            }
-        }
-        //Open a new match chain only (for debugging).
-        [HttpPost("open-match-chain")]
-        public async Task<IActionResult> OpenMatchChain()
-        {
-            try
-            {
-                var chainId = await _svc.OpenMatchChainAsync();
-                return Ok(new { success = true, newChainId = chainId });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, error = ex.Message });
-            }
-        }
-        /// <summary>
-        /// Create XFighter app on an existing chain (resolve chainId if partial supplied).
-        /// Body must include moduleId, chainId (or partial) and leaderboardAppId.
-        /// </summary>
-        [HttpPost("create-xfighter-app")] //(for debugging)
-        public async Task<IActionResult> CreateXfighterApp([FromBody] CreateXfighterRequest req)
-        {
-            if (req == null) return BadRequest(new { success = false, error = "invalid_request", message = "Request body required." });
-
-            if (string.IsNullOrWhiteSpace(req.ModuleId))
-                return BadRequest(new { success = false, error = "missing_moduleId", message = "moduleId is required in the request body." });
-
-            if (string.IsNullOrWhiteSpace(req.ChainId))
-                return BadRequest(new { success = false, error = "missing_chainId", message = "chainId is required in the request body." });
-
-            if (string.IsNullOrWhiteSpace(req.LeaderboardAppId))
-                return BadRequest(new { success = false, error = "missing_leaderboardAppId", message = "leaderboardAppId is required in the request body." });
-
-            try
-            {
-                int maxRetries = req.MaxRetries ?? 3;
-                int retryDelayMs = req.RetryDelayMs ?? 2000;
-
-                var appId = await _svc.CreateXfighterAppOnChainAsync(req.ModuleId, req.ChainId, req.LeaderboardAppId, maxRetries, retryDelayMs);
-                return Ok(new { success = true, appId, chainId = req.ChainId });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, error = ex.Message, details = ex.InnerException?.Message });
-            }
-        }
-        //Automatic Linera Services
         [HttpPost("start-linera-service")]
         public async Task<IActionResult> StartLineraService([FromQuery] int port = 8080)
         {
@@ -148,118 +64,145 @@ namespace LineraOrchestrator.Controllers
             }
         }
 
-        [HttpPost("stop-linera-service")]
-        public async Task<IActionResult> StopLineraService()
+        // DEBUG
+        [HttpPost("all-opened-chains")]
+        public async Task<IActionResult> AllOpenedChains()
         {
             try
             {
-                await _svc.StopLineraServiceAsync();
-                return Ok(new { success = true });
+                var chains = await _svc.GetAllOpenedChainsAsync();
+                return Ok(new { success = true, count = chains.Count, chains });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, error = ex.Message });
+                return StatusCode(500, new { success = false, error = ex.Message, details = ex.InnerException?.Message });
             }
         }
-        //submit-match-result & get-leaderboard-data" endpoint
+
+        [HttpPost("open-and-create")]
+        public async Task<IActionResult> OpenAndCreate([FromBody] CreateMatchRequest req)
+        {
+
+            try
+            {
+                var (chainId, appId) = await _svc.OpenAndCreateWithServiceControlAsync(req.Player1, req.Player2);
+
+                // for backward-compatibility we treat matchId == chainId
+                var matchId = chainId;
+                return Ok(new { success = true, matchId, chainId, appId });
+            }
+            catch (InvalidOperationException ioe)
+            {
+                // service chết hoặc chưa start
+                // Service not ready -> try waiting for monitor to recover then retry once
+                // cứ 250ms kiểm tra 1 lần, trả về true khi PID service tồn tại và ổn định ≥ 400ms
+                // Nếu sau 10 giây mà chưa ổn định -> trả về false
+                Console.WriteLine("[API] Service not ready, waiting monitor to recover before retrying...");
+                bool recovered = await _svc.WaitForServiceViaMonitorAsync(timeoutSeconds: 10, pollMs: 250, stableMs: 400);
+                if (!recovered) // Nếu service vẫn chưa phục hồi sau 10s
+                {
+                    Console.WriteLine("[API] Submit: monitor did not report recovery in time.");
+                    return StatusCode(503, new { success = false, error = ioe.Message }); // trả mã 503 cho client kèm lỗi gốc
+                }
+                // Nếu monitor báo service đã ổn định → Thử gửi lại đúng 1 lần
+                // KHÔNG retry mutation nữa -> Tạo dư chainId
+                return StatusCode(503, new { success = false, error = "Service recovered late, please retry client-side." });
+            }
+            catch (TimeoutException tex)
+            {
+                // nếu service hoặc operation time out (ví dụ quá lâu trong queue / post)
+                Console.WriteLine($"[API] OpenAndCreate timeout: {tex.Message}");
+                return StatusCode(504, new { success = false, error = tex.Message });
+            }
+            catch (Exception ex)
+            {
+                // Nếu bug bất ngờ
+                return StatusCode(500, new { success = false, error = ex.Message, details = ex.InnerException?.Message });
+            }
+        }
+
+        //submit-match-result endpoint
         [HttpPost("submit-match-result")]
-        public async Task<IActionResult> SubmitMatchResult([FromBody] JsonElement payload)
+        public async Task<IActionResult> SubmitMatchResult([FromBody] SubmitMatchRequest request)
         {
             try
             {
-                if (payload.ValueKind != JsonValueKind.Object)
-                    return BadRequest(new { success = false, message = "Empty or invalid body" });
+                if (request == null || request.MatchResult == null)
+                    return BadRequest(new { success = false, message = "Invalid payload" });
 
-                // helpers
-                string GetFirstString(JsonElement obj, params string[] keys)
+                // auto-generate matchId nếu trống
+                if (string.IsNullOrWhiteSpace(request.MatchResult.MatchId) &&
+                        !string.IsNullOrWhiteSpace(request.ChainId))
                 {
-                    foreach (var k in keys)
-                    {
-                        if (obj.ValueKind != JsonValueKind.Object) continue;
-                        if (obj.TryGetProperty(k, out var p) && p.ValueKind != JsonValueKind.Null)
-                        {
-                            try { var s = p.GetString(); if (!string.IsNullOrWhiteSpace(s)) return s; } catch { }
-                        }
-                    }
-                    return string.Empty;
+                    request.MatchResult.MatchId = request.ChainId;
                 }
 
-                int GetFirstInt(JsonElement obj, params string[] keys)
+                // auto-fill timestamp nếu 0
+                if (request.MatchResult.Timestamp == 0)
+                    request.MatchResult.Timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                try
                 {
-                    foreach (var k in keys)
+                    // gọi service (service sẽ handle chainId nếu null/empty)
+                    var json = await _svc.SubmitMatchResultAsync(request.ChainId, request.MatchResult);
+                    // parse JSON gốc
+                    using var doc = JsonDocument.Parse(json);
+                    var root = doc.RootElement;
+
+                    // bóc tách các field chính để trả về cho client
+                    var response = new
                     {
-                        if (obj.ValueKind != JsonValueKind.Object) continue;
-                        if (obj.TryGetProperty(k, out var p) && p.ValueKind != JsonValueKind.Null)
-                        {
-                            if (p.ValueKind == JsonValueKind.Number && p.TryGetInt32(out var iv)) return iv;
-                            if (p.ValueKind == JsonValueKind.String)
-                            {
-                                var s = p.GetString();
-                                if (int.TryParse(s, out var iv2)) return iv2;
-                                if (long.TryParse(s, out var lv)) return Convert.ToInt32(lv);
-                            }
-                        }
-                    }
-                    return 0;
-                }
-
-                // read top-level chain/app ids (case-insensitive attempts)
-                var chainId = GetFirstString(payload, "chainId", "ChainId");
-                var appId = GetFirstString(payload, "appId", "AppId");
-
-                // Try nested matchResult first
-                MatchResult? match = null;
-                if (payload.TryGetProperty("matchResult", out var mrElem) && mrElem.ValueKind == JsonValueKind.Object)
-                {
-                    var matchId = GetFirstString(mrElem, "MatchId", "matchId");
-                    if (string.IsNullOrWhiteSpace(matchId)) matchId = Guid.NewGuid().ToString();
-
-                    match = new MatchResult
-                    {
-                        MatchId = matchId,
-                        Player1Username = GetFirstString(mrElem, "Player1Username", "player1Username", "player", "Player"),
-                        Player2Username = GetFirstString(mrElem, "Player2Username", "player2Username"),
-                        Player1Score = GetFirstInt(mrElem, "Player1Score", "player1Score", "score"),
-                        Player2Score = GetFirstInt(mrElem, "Player2Score", "player2Score"),
-                        WinnerUsername = GetFirstString(mrElem, "WinnerUsername", "winnerUsername"),
-                        LoserUsername = GetFirstString(mrElem, "LoserUsername", "loserUsername"),
-                        DurationSeconds = GetFirstInt(mrElem, "DurationSeconds", "durationSeconds"),
-                        Timestamp = GetFirstInt(mrElem, "Timestamp", "timestamp"),
-                        MapName = GetFirstString(mrElem, "MapName", "mapName"),
-                        MatchType = GetFirstString(mrElem, "MatchType", "matchType")
+                        success = root.GetProperty("success").GetBoolean(),
+                        matchId = root.GetProperty("matchId").GetString(),
+                        chainId = root.GetProperty("chainId").GetString(),
+                        opId = root.TryGetProperty("opId", out var op) ? op.GetString() : null,
+                        verified = root.TryGetProperty("verified", out var ver) && ver.GetBoolean()
                     };
 
-                    if (match.Timestamp == 0) match.Timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                    // log full raw để debug if Linera SDK change response way
+                    Console.WriteLine($"[DEBUG] Raw Linera response: {json}");
+
+                    return Ok(response);
                 }
-                else
+                catch (InvalidOperationException ioe)
                 {
-                    // fallback flattened legacy shape
-                    var player = GetFirstString(payload, "player", "Player");
-                    var score = GetFirstInt(payload, "score", "Score");
-                    var matchId = GetFirstString(payload, "matchId", "MatchId");
-                    if (string.IsNullOrWhiteSpace(matchId)) matchId = Guid.NewGuid().ToString();
-
-                    match = new MatchResult
+                    // service not ready — wait for monitor -> retry once
+                    Console.WriteLine("[API] Submit: service not ready, waiting monitor to recover before retrying...");
+                    var recovered = await _svc.WaitForServiceViaMonitorAsync(timeoutSeconds: 10, pollMs: 250, stableMs: 400);
+                    if (!recovered)
                     {
-                        MatchId = matchId,
-                        Player1Username = player,
-                        Player2Username = string.Empty,
-                        Player1Score = score,
-                        Player2Score = 0,
-                        WinnerUsername = player,
-                        LoserUsername = string.Empty,
-                        DurationSeconds = 0,
-                        Timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                        MapName = string.Empty,
-                        MatchType = string.Empty
-                    };
+                        Console.WriteLine("[API] Submit: monitor did not report recovery in time.");
+                        return StatusCode(503, new { success = false, error = ioe.Message });
+                    }
+
+                    // retry once
+                    try
+                    {
+                        var json = await _svc.SubmitMatchResultAsync(request.ChainId, request.MatchResult);
+                        using var doc = JsonDocument.Parse(json);
+                        var root = doc.RootElement;
+                        var response = new
+                        {
+                            success = root.GetProperty("success").GetBoolean(),
+                            matchId = root.GetProperty("matchId").GetString(),
+                            chainId = root.GetProperty("chainId").GetString(),
+                            opId = root.TryGetProperty("opId", out var op) ? op.GetString() : null,
+                            verified = root.TryGetProperty("verified", out var ver) && ver.GetBoolean()
+                        };
+                        Console.WriteLine($"[DEBUG] Raw Linera response (retry): {json}");
+                        return Ok(response);
+                    }
+                    catch (Exception retryEx)
+                    {
+                        Console.WriteLine($"[API] Submit retry failed: {retryEx.Message}");
+                        return StatusCode(503, new { success = false, error = retryEx.Message });
+                    }
                 }
-
-                var json = await _svc.SubmitMatchResultAsync(chainId, appId, match);
-
-                // parse to JsonDocument for consistent response shape
-                var parsed = JsonDocument.Parse(json);
-                return Ok(new { success = true, body = parsed });
+            }
+            catch (TimeoutException tex)
+            {
+                // Timeout from service — likely long tx commit
+                Console.WriteLine($"[API] Submit timeout: {tex.Message}");
+                return StatusCode(504, new { success = false, error = tex.Message });
             }
             catch (Exception ex)
             {
@@ -268,11 +211,12 @@ namespace LineraOrchestrator.Controllers
         }
 
         [HttpPost("get-leaderboard-data")]
-        public async Task<IActionResult> GetLeaderboardData([FromBody] LeaderboardRequest req)
+        public async Task<IActionResult> GetLeaderboardData()
         {
+            /// Đọc phương thức trả body.data.leaderboard
             try
             {
-                var json = await _svc.GetLeaderboardDataAsync(req.ChainId, req.AppId);
+                var json = await _svc.GetLeaderboardDataAsync();
                 return Ok(new { success = true, body = JsonDocument.Parse(json) });
             }
             catch (Exception ex)
@@ -280,14 +224,59 @@ namespace LineraOrchestrator.Controllers
                 return StatusCode(500, new { success = false, error = ex.Message });
             }
         }
-        // ===================== DEBUG: Match Mapping =====================
+
+        //Leaderboard check crosschain messages
+        [HttpGet("verify-match-result")]
+        public async Task<IActionResult> VerifyMatchResult(
+             string userId,
+             int expectedMatches,
+             int timeoutMs = 8000,
+             int pollIntervalMs = 500)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+                return BadRequest(new { success = false, error = "userId is required" });
+
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            while (sw.ElapsedMilliseconds < timeoutMs)
+            {
+                try
+                {
+                    var json = await _svc.GetLeaderboardDataAsync();
+                    using var doc = JsonDocument.Parse(json);
+                    if (doc.RootElement.TryGetProperty("data", out var data) &&
+                        data.TryGetProperty("leaderboard", out var lb) &&
+                        lb.ValueKind == JsonValueKind.Array)
+                    {
+                        foreach (var e in lb.EnumerateArray())
+                        {
+                            if (e.GetProperty("userId").GetString() == userId &&
+                                e.GetProperty("totalMatches").GetInt32() >= expectedMatches)
+                            {
+                                return Ok(new { success = true, userId, message = "Leaderboard updated" });
+                            }
+                        }
+                    }
+                }
+                catch { /* bỏ qua lỗi tạm thời */ }
+
+                await Task.Delay(pollIntervalMs);
+            }
+
+            return Ok(new
+            {
+                success = false,
+                userId,
+                message = $"Không thấy totalMatches >= {expectedMatches} trong {timeoutMs}ms"
+            });
+        }
+        //DEBUG: Match Mapping
         [HttpGet("match-mapping/{matchId}")]
         public IActionResult GetMatchMapping(string matchId)
         {
             if (string.IsNullOrWhiteSpace(matchId))
                 return BadRequest(new { success = false, error = "matchId is required" });
 
-            var mapping = _svc.GetMappingForMatch(matchId);
+            var mapping = _svc.GetMappingForChain(matchId);
             if (mapping == null)
                 return NotFound(new { success = false, message = $"No mapping found for matchId={matchId}" });
 
@@ -296,10 +285,9 @@ namespace LineraOrchestrator.Controllers
                 success = true,
                 matchId,
                 chainId = mapping.ChainId,
-                appId = mapping.AppId
             });
         }
-
+        //DEBUG: Match Mapping
         [HttpGet("match-mapping/all")]
         public IActionResult GetAllMatchMappings()
         {
@@ -312,24 +300,19 @@ namespace LineraOrchestrator.Controllers
                 {
                     matchId = kv.Key,
                     chainId = kv.Value.ChainId,
-                    appId = kv.Value.AppId
                 }).ToList()
             });
         }
-        // ===================== DEBUG: Match Mapping =====================
-        // ===================== Config Status Linera Node & Service on Unity =====================
-
+        // =Config Status Linera Service on Unity =====================
+        //DEBUG Checking Service  [HttpPost("linera-service-status")]
         [HttpGet("linera-service-status")]
-        [HttpPost("linera-service-status")]
         public IActionResult GetLineraServiceStatus()
         {
             try
             {
                 var running = _svc.IsServiceRunning();   // check service có chạy không
                 var pid = _svc.GetServicePid();          // lấy PID (null nếu chưa có)
-
-                Console.WriteLine($"[Linera] Status check via API => Running={running}, PID={pid}");
-
+                //Console.WriteLine($"[LINERA-SERVICE] Unity Status check via API => Running={running}, PID={pid}");
                 return Ok(new
                 {
                     success = true,
@@ -347,28 +330,206 @@ namespace LineraOrchestrator.Controllers
                 });
             }
         }
-
         [HttpGet("linera-config")]
         public IActionResult GetLineraConfig()
         {
             try
             {
                 var cfg = _svc.GetCurrentConfig();
+                // Xác định chế độ hiện tại
+                var mode = cfg.UseRemoteTestnet ? "Conway Testnet" : "Local Net Backup";
+
                 return Ok(new
                 {
                     success = true,
+                    mode,
                     linera_wallet = cfg.LineraWallet,
                     linera_storage = cfg.LineraStorage,
                     linera_keystore = cfg.LineraKeystore,
                     xfighter_module_id = cfg.XFighterModuleId,
                     leaderboard_app_id = cfg.LeaderboardAppId,
                     xfighter_app_id = cfg.XFighterAppId,
+                    publisher_chain_id = cfg.PublisherChainId,
+                    tournament_app_id = cfg.TournamentAppId,
                     isReady = cfg.IsReady
                 });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+
+        [HttpGet("ping")]
+        public IActionResult Ping() => Ok(new { success = true, service = "linera-orchestrator", now = DateTime.UtcNow });
+
+        // API: Lấy lịch sử 20 trận gần nhất của một player
+        [HttpGet("player-history/{username}")]
+        public async Task<IActionResult> GetPlayerHistory(string username, [FromQuery] int limit = 20)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                return BadRequest(new { success = false, error = "username is required" });
+
+            try
+            {
+                var history = await _svc.GetPlayerHistoryAsync(username, limit);
+
+                if (history == null || history.Count == 0) // username tồn tại
+                    return NotFound(new { success = false, error = $"Player '{username}' not found" });
+
+                return Ok(new
+                {
+                    success = true,
+                    username,
+                    count = history.Count,
+                    matches = history.Select(e => new {
+                        chainId = e.ChainId,
+                        matchdetails = e.MatchResult // nếu bạn muốn giữ matchResult gốc nguyên vẹn, trả whole object:
+                    }).ToList()
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message,
+                    details = ex.InnerException?.Message
+                });
+            }
+        }
+        // API: Lấy tất cả match trong 1 chainId
+        [HttpGet("match-history/{chainId}")]
+        public async Task<IActionResult> GetMatchHistoryByChain(string chainId)
+        {
+            if (string.IsNullOrWhiteSpace(chainId))
+                return BadRequest(new { success = false, error = "chainId is required" });
+
+            try
+            {
+                var matches = await _svc.GetMatchesByChainAsync(chainId);
+
+                if (matches == null || matches.Count == 0) // check chainId tồn tại
+                    return NotFound(new { success = false, error = $"Chain '{chainId}' not found" });
+
+                return Ok(new
+                {
+                    success = true,
+                    chainId,
+                    count = matches.Count,
+                    matches
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message,
+                    details = ex.InnerException?.Message
+                });
+            }
+        }
+        [HttpGet("match-list")]
+        public IActionResult GetMatchList()
+        {
+            try
+            {
+                var allMappings = _svc.GetAllMappings();
+                return Ok(new
+                {
+                    success = true,
+                    count = allMappings.Count,
+                    matches = allMappings.Select(kv => new
+                    {
+                        chainId = kv.Value.ChainId,
+                        appId = kv.Value.AppId,
+                        matchId = kv.Value.MatchId,
+                        status = kv.Value.Status,
+                        player1 = kv.Value.Player1,
+                        player2 = kv.Value.Player2,
+                        submittedAt = kv.Value.SubmittedAt,
+                        submittedOpId = kv.Value.SubmittedOpId
+                    }).ToList()
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+
+        [HttpPost("tournament/start")]
+        public async Task<IActionResult> StartTournament()
+        {
+            await _svc.StartTournamentAsync();
+            return Ok("Tournament completed");
+        }
+
+        [HttpPost("tournament/leaderboard")]
+        public async Task<IActionResult> GetTournamentLeaderboard()
+        {
+            try
+            {
+                var json = await _svc.GetTournamentLeaderboardDataAsync();
+                return Ok(new { success = true, body = JsonDocument.Parse(json) });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+        /// Thông tin giải đấu
+        [HttpPost("tournament/meta")]
+        public async Task<IActionResult> GetTournamentMeta()
+        {
+            try
+            {
+                var json = await _svc.GetTournamentMetaDataAsync();
+                return Ok(new { success = true, body = JsonDocument.Parse(json) });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+        // Snapshot leaderboard
+        [HttpPost("leaderboard/create-snapshot")]
+        public async Task<IActionResult> CreateLeaderboardSnapshot()
+        {
+            try
+            {
+                // Gọi service tạo snapshot từ leaderboard hiện tại (hoặc live data)
+                var snapshot = await _svc.CreateAndSaveLeaderboardSnapshotAsync();
+
+                if (snapshot == null)
+                {
+                    return StatusCode(500, new
+                    {
+                        success = false,
+                        message = "Không thể tạo snapshot. Kiểm tra lại dữ liệu leaderboard."
+                    });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    snapshotId = snapshot.SnapshotId,
+                    createdAt = snapshot.CreatedAt,
+                    topPlayers = snapshot.TopPlayers,
+                    allPlayers = snapshot.AllPlayers,
+                    hash = snapshot.Hash
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi tạo snapshot leaderboard",
+                    error = ex.Message,
+                    details = ex.InnerException?.Message
+                });
             }
         }
     }

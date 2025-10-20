@@ -1,0 +1,13 @@
+2025-09-13T06:00:00.852198Z  INFO linera::main:node_service{port=8080}: linera_service::node_service: GraphiQL IDE: http://localhost:8080
+2025-09-13T06:00:00.858042Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.861392Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.861779Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.861944Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.862641Z  INFO linera::main:node_service{port=8080}: linera_core::client: Connected to validator 03ab03596225e3bb5e9895f15aee0eb0ccd58b63d0ded85eccbfc104002565597f
+2025-09-13T06:00:00.864455Z  INFO linera::main:node_service{port=8080}: linera_client::chain_listener: Done processing inbox. 0 blocks created.
+2025-09-13T06:00:00.867126Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.867309Z  INFO linera::main:node_service{port=8080}: linera_core::client: Received 0 certificates from 1 validator(s).
+2025-09-13T06:00:00.867468Z  INFO linera::main:node_service{port=8080}: linera_core::client: Connected to validator 03ab03596225e3bb5e9895f15aee0eb0ccd58b63d0ded85eccbfc104002565597f
+2025-09-13T06:00:00.867675Z  INFO linera::main:node_service{port=8080}: linera_core::client: Connected to validator 03ab03596225e3bb5e9895f15aee0eb0ccd58b63d0ded85eccbfc104002565597f
+2025-09-13T06:00:00.868467Z  INFO linera::main:node_service{port=8080}: linera_client::chain_listener: Done processing inbox. 0 blocks created.
+2025-09-13T06:00:00.868487Z  INFO linera::main:node_service{port=8080}: linera_client::chain_listener: Done processing inbox. 0 blocks created.
