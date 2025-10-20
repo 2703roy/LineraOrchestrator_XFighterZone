@@ -4,7 +4,7 @@
 | **Wave 1** | Core Orchestrator, Unity Gameplay, Linera onchain Integration| ✅ Completed |
 | **Wave 2** | UI/UX improvements (Friend List, Hero System) | 🔄 In Progress |
 | **Wave 3** | Tournament Bracket Expansion | ⏳ Planned |
-| **Wave 4** | Cross-chain Asset Integration | ⏳ Planned |
+| **Wave 4** | Shaping the Metaverse, Betting System & Cross-chain Assets | ⏳ Planned |
 | **Wave 5** | Marketplace / Prediction Pool | ⏳ Planned |
 | **Wave 6** | Metaverse & Orchestration Upgrade | ⏳ Planned |
 
@@ -22,5 +22,6 @@ All notable changes to this project will be documented in this file.
 
 ## [v0.1.0] - 2025-10-20
 - Initial public release for Linera Buildathon.
+
 
 
