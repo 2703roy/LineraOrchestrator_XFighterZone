@@ -230,7 +230,7 @@ curl -sS -X POST http://localhost:5290/linera/open-and-create \
   -d '{"query":"mutation { openAndCreate }"}' | jq .
 ```
 4. Submit Match Results
-Replace the chainId (REPLACE_WITH_CHAIN_ID returned by open-and-create) below with the one returned returned from open-and-create:
+Replace the chainId below with the one returned from the open-and-create command.
 ```
 curl -sS -X POST http://localhost:5290/linera/submit-match-result \
   -H "Content-Type: application/json" \
@@ -252,13 +252,15 @@ curl -sS -X POST http://localhost:5290/linera/submit-match-result \
   }' | jq .
 ```
 After submission, the result is committed on-chain and broadcasted to the leaderboard.
+Check leaderboard data:
+`curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
+
 5. Polling / verify — Check leaderboard received results
 After submitting, the system may need a cycle to verify & replicate to the leaderboard. Use the verify (polling) command:
 ```
 curl -sS -X POST http://localhost:5290/linera/verify-match-result -d '{"matchId":"match-test"}' | jq .
 ```
 If the API returns verified: true (or similar), the record has been posted to the leaderboard.
-If not, poll every 3–5 seconds until it is verified.
 
 🧰 Helper Debug Commands (Optional)
 ```
@@ -337,36 +339,8 @@ Flow:
 3. Once your account is created, you can use the same credentials to log in inside the Unity game client.
 
 ### Demo Flow Summary
-`Unity Client → Orchestrator API (C# @ port 5290) → Linera Microchains (Rust WASM)  
-               ↘︎ Leaderboard / Tournament      `
-
-## 🧪 Quick Testing Guide
-This section assumes you already have the Linera environment (CLI, localnet, or Conway Testnet) ready.
-1. Run Orchestrator
-```bash
-cd LineraOrchestrator
-dotnet build
-dotnet run
-```
-2. Start Linera Node (Localnet)
-`curl -sS -X POST http://localhost:5290/linera/start-linera-node | jq .`
-Check for "isReady": true — meaning node + wallets are ready.
-
-3. Create and Submit a Match
-```
-# create
-curl -sS -X POST http://localhost:5290/linera/open-and-create | jq .
-# submit
-curl -sS -X POST http://localhost:5290/linera/submit-match-result \
-  -H "Content-Type: application/json" \
-  -d '{"matchResult": {...}}' | jq .
-
-```
-4. Verify Leaderboard Sync
-Poll until verified:
-`curl -sS -X POST http://localhost:5290/linera/verify-match-result -d '{"matchId":"match-test"}' |`
-Check leaderboard data:
-`curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
+Unity Client → Orchestrator API (C# @ port 5290) → Linera Microchains (Rust WASM)  
+               ↘︎ Leaderboard / Tournament      
 
 ### [Full testing video if you see any failures on setup](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
 ---
@@ -392,7 +366,7 @@ We welcome contributions! Please feel free to open issues or submit pull request
 - [Applications That Handle Assets (temporary chains / close_chain pattern)](https://linera.dev/developers/advanced_topics/assets.html)
 
 ### 🎥 Media & Technical Visuals
-- **XFighterZone Draw Flow:** [Google Drive](https://drive.google.com/file/d/1HzD-v5oaNvf1aohTNV2mWNM5SQ0OI2QJ/view?usp=sharing)  
+- **XFighterZone Files:** [Google Drive](https://drive.google.com/drive/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF?usp=sharing)  
 - **Full Playlists:** [https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 ](https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 )
   
 Included
@@ -400,6 +374,7 @@ Included
 Demo — Server Battle
 Stress Test (100 Players / 50 Matches)
 Planning Management Full Chaper 0 (Buildathon Demo)
+Quick Full Testing if we see any failures (optional)
 ```
 
 ## 👥 Team & Contact
@@ -412,6 +387,7 @@ Planning Management Full Chaper 0 (Buildathon Demo)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
