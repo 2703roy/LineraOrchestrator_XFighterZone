@@ -171,12 +171,13 @@ In `Program.cs`, adjust the following flags inside your configuration:
 UseRemoteTestnet = false,          // true = Conway Testnet mode, false = Local Backup mode
 StartServiceWhenRemote = false,    // true = Conway Service mode, false = Local Service mode
 ```
-✅ If using Local Mode:
-Set both flags to false. The node will run locally and the orchestrator will automatically start linera net up.
-✅ If using Testnet Conway:
+✅ If using Local Mode:  
+Set both flags to false. The node will run locally and the orchestrator will automatically start linera net up.  
+
+✅ If using Testnet Conway:  
 Set both flags to true. The orchestrator will skip starting a local network and connect directly to the remote Conway testnet.
 
-Conway Testnet Wallet Setup
+### Conway Testnet Wallet Setup
 Before running: ```curl -sS -X POST http://localhost:5290/linera/start-linera-node | jq .```
 You must create and initialize your wallet for the Conway Testnet:
 ```
@@ -198,8 +199,8 @@ This folder includes:
 ### 📄 Documents
 1. **XFighterZone Overview (PDF)** —  
    Detailed introduction to the project, including architecture, gameplay concept, and technical roadmap.  
-2. **XFighter Battle Plan (Application)** —  
-   Explains the setup, fighter logic, keyboard inputs, Login Sence, Battle Scene, Lobby Sense and code integration behind.
+2. **XFighter Battle Plan- XFighterZone Battle Demonstration** —  
+   Explains the setup, fighter logic, keyboard inputs, Login Sence, Battle Scene, Lobby Scene and code integration behind.
 
 ### 🎬 Videos
 1. **XFighter Battle Demo** — Live gameplay showing on-chain combat and synchronization via Linera microchains.  
@@ -267,8 +268,10 @@ If the API returns verified: true (or similar), the record has been posted to th
 curl -sS -X POST http://localhost:5290/linera/stop-linera-service | jq .
 curl -sS -X POST http://localhost:5290/linera/linera-service-status | jq .
 curl -sS http://localhost:5290/linera/linera-config | jq .
+
 #Check all chains
 curl -sS -X POST http://localhost:5290/linera/all-opened-chains | jq .
+
 #Check player history
 curl -sS "http://localhost:5290/linera/player-history/test?limit=20" | jq .
 ```
@@ -315,10 +318,10 @@ The package contains:
 - `ClientStressTest.w1\XFighterZone.exe` — Stress test match-making system (100 clients / 50 matches concurrently).
 - `ManagerDashboard.w1\Linera GraphQL.exe` — Dashboard for match list, global/tournament leaderboards, and on-chain searches.
 
-Flow:
+Work Flow:
 ```
 1. Launch ServerLobby.exe
-2. Open XFighterZone.exe (Client) — e.g. account: test1/test1 and test2/test2.
+2. Open XFighterZone.exe (Client) — e.g. account/password: test1/test1 and test2/test2.
 3. Matchmaking automatically finds opponents.
 4. When a match is found, Orchestrator creates a match ChainId (microchain) → spawns ServerBattle headless.
 5. After battle, ServerBattle → ServerLobby → Orchestrator → On-chain submit → Global Leaderboard update.
@@ -340,7 +343,7 @@ Flow:
 Unity Client → Orchestrator API (C# @ port 5290) → Linera Microchains (Rust WASM)  
                ↘︎ Leaderboard / Tournament      
 
-### [Full testing video if you see any failures on setup](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
+## [Full testing video if you see any failures on setup](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
 ---
 
 Contributing
@@ -365,11 +368,11 @@ We welcome contributions! Please feel free to open issues or submit pull request
 
 ### 🎥 Media & Technical Visuals
 - **XFighterZone Files:** [Google Drive](https://drive.google.com/drive/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF?usp=sharing)  
-- **Full Playlists:** [https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 ](https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 )
+- **Full Playlists Buildathon Demo:** [https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 ](https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 )
   
 Included
 ```
-Demo — Server Battle
+XFighterZone — Real-time Esports on Linera Microchains (Battle Demo)
 Stress Test (100 Players / 50 Matches)
 Planning Management Full Chaper 0 (Buildathon Demo)
 Quick Full Testing if we see any failures (optional)
@@ -385,6 +388,7 @@ Quick Full Testing if we see any failures (optional)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
