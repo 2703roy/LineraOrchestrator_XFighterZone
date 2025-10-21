@@ -145,7 +145,8 @@ All other parameters (wallet, storage, keystore) can remain empty if using remot
 ✅ **Unity builds** (Lobby, Battle servers, Client & Client StressTest) are provided separately for evaluation.  
 ✅ **Important:** Two Unity clients cannot run on the same machine — please run them on two separate computers for multiplayer testing.
 
-### 🧠 Developer Notes (Optional Manual Interaction)
+🧠 Developer Notes & Node Setup
+
 For developers who want to interact directly with the Linera GraphQL endpoint (port 8080),
 standard CLI-based deployment and queries can be used instead of the Orchestrator service.
 
@@ -153,13 +154,15 @@ Example operations include:
 - linera publish-module to register the xfighter, leaderboard, and tournament modules
 - linera publish-and-create to deploy applications
 - curl GraphQL queries to inspect child apps and match results
-However, these steps are not required for evaluation, since the Orchestrator (port 5290) automates:
+
+However, these steps are not required for normal evaluation, since the Orchestrator (port 5290) automates:
 - Module publishing
 - Application creation
 - Cross-chain message handling
 - Match and leaderboard synchronization
-### ⚙️ Node Setup (Local vs Testnet Conway)
-Before running the orchestrator, make sure your Linera node configuration matches your environment.
+
+Before running the Orchestrator, make sure your Linera node configuration matches your environment (Localnet or Conway Testnet).
+
 ### 🧩 Program.cs Configuration
 
 In `Program.cs`, adjust the following flags inside your configuration:
@@ -387,6 +390,7 @@ Quick Full Testing if we see any failures (optional)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
