@@ -222,17 +222,13 @@ curl -sS -X POST http://localhost:5290/linera/start-linera-node | jq .
 This command boots a Linera localnet node and initializes wallets and storage automatically.
 Unity apps will connect directly to this orchestrator endpoint (http://localhost:5290/).
 
-2. Verify Leaderboard and Match APIs
-You can check current leaderboard data:
-`curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
-
-3. Open chain & Create a Match (Microchain)
+2. Open chain & Create a Match (Microchain)
 ```
 curl -sS -X POST http://localhost:5290/linera/open-and-create \
   -H "Content-Type: application/json" \
   -d '{"query":"mutation { openAndCreate }"}' | jq .
 ```
-4. Submit Match Results
+3. Submit Match Results
 Replace the chainId below with the one returned from the open-and-create command.
 ```
 curl -sS -X POST http://localhost:5290/linera/submit-match-result \
@@ -254,11 +250,11 @@ curl -sS -X POST http://localhost:5290/linera/submit-match-result \
     }
   }' | jq .
 ```
-5. After submission, the result is committed on-chain and broadcasted to the leaderboard.
+4. After submission, the result is committed on-chain and broadcasted to the leaderboard.
 Check leaderboard data:
 `curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
 
-6. Polling / verify — Check leaderboard received results
+5. Polling / verify — Check leaderboard received results
 After submitting, the system may need a cycle to verify & replicate to the leaderboard. Use the verify (polling) command:
 ```
 curl -sS -X POST http://localhost:5290/linera/verify-match-result -d '{"matchId":"match-test"}' | jq .
@@ -389,6 +385,7 @@ Quick Full Testing if we see any failures (optional)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
