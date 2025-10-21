@@ -10,7 +10,7 @@ Unity delivers immersive real-time gameplay. Linera provides transparent, verifi
 - [x] **Drive Folder:** Docs & Videos publicly accessible ([View](https://drive.google.com/drive/u/0/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF))
 - [X] **Demo Videos:** Uploaded (Battle Demo, Stress Test, Chapter 0 Recap)
 - [X] **Quick Demo Commands:** Validated on a clean environment (Localnet + Conway Testnet)
-- [X] **Unity Build:** Public prebuilt package ([Download](https://drive.google.com/file/d/1zPwN7vRExzDM0LZWOagbRbGCZGuguJVA/view?usp=drive_link))
+- [X] **Unity Build:** Public prebuilt package ([Download](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing))
 - [X] **CHANGELOG.md:** Included to track milestone updates
 - [X] **Conway Testnet Verification:** Fully supported via UseRemoteTestnet = true
 
@@ -307,13 +307,13 @@ curl -X POST http://localhost:5290/linera/tournament/match-list -d '{}' | jq .
 ### 🕹️ Unity demo (prebuilt)
 You can directly test the **Unity-powered Linera Orchestrator demo** without building the Unity project.
 ### Download the Prebuilt Unity App
-Download from Google Drive:  👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/file/d/1zPwN7vRExzDM0LZWOagbRbGCZGuguJVA/view?usp=drive_link)
-Unzip the folder to your **C:** drive:  `C:\XFighterZone.LDW1\`
+Download from Google Drive:  👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing)
+Unzip the folder to your **C:** drive:  `C:\XFighterZone.LDW1\` and `C:\XFighterZone_StressTest.LDW1\`
 The package contains:
 - `ServerLobby.w1\ServerLobby.exe` — Launches the lobby, matchmaking, and leaderboard services.
 - `ServerBattle.w1\ServerBattle.exe` — Spawns headless matches after matchmaking is complete; handles result submission.
 - `Client.w1\XFighterZone.exe` — Player client for testing matchmaking and leaderboard sync.
-- `ClientStressTest.w1\XFighterZone.exe` — Stress test system (100 clients / 50 matches concurrently).
+- `ClientStressTest.w1\XFighterZone.exe` — Stress test match-making system (100 clients / 50 matches concurrently).
 - `ManagerDashboard.w1\Linera GraphQL.exe` — Dashboard for match list, global/tournament leaderboards, and on-chain searches.
 
 Flow:
@@ -366,6 +366,8 @@ Poll until verified:
 Check leaderboard data:
 `curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
 
+### Here the link full testing if you see any failures on setup: 
+[Full testing video](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
 ---
 
 Contributing
@@ -409,4 +411,5 @@ Planning Management Full Chaper 0 (Buildathon Demo)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
