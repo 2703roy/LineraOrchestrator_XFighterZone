@@ -8,10 +8,10 @@ Unity delivers immersive real-time gameplay. Linera provides transparent, verifi
 ## 📤 Buildathon Submission Checklist 
 - [x] **Repository:** Public and includes full README + Contracts (.wasm)
 - [x] **Drive Folder:** Docs, Application & Videos demo (Battle Demo, Stress Test, Plan Chapter 0 Recap, Full Testing) publicly accessible ([View](https://drive.google.com/drive/u/0/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF))
-- [X] **Quick Demo Commands:** Validated on a clean environment (Localnet + Conway Testnet)
-- [X] **Unity Build:** Public prebuilt package ([Download](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing))
-- [X] **CHANGELOG.md:** Included to track milestone updates
-- [X] **Conway Testnet Verification:** Fully supported via UseRemoteTestnet = true
+- [x] **Quick Demo Commands:** Validated on a clean environment (Localnet + Conway Testnet)
+- [x] **Unity Build:** Public prebuilt package ([Download](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing))
+- [x] **CHANGELOG.md:** Included to track milestone updates
+- [x] **Conway Testnet Verification:** Fully supported via UseRemoteTestnet = true
 
 ---
 
@@ -149,9 +149,9 @@ For developers who want to interact directly with the Linera GraphQL endpoint (p
 standard CLI-based deployment and queries can be used instead of the Orchestrator service.
 
 Example operations include:
-- linera publish-module to register the xfighter, leaderboard, and tournament modules
-- linera publish-and-create to deploy applications
-- curl GraphQL queries to inspect child apps and match results
+- `linera publish-module` — register the xfighter, leaderboard, and tournament modules  
+- `linera publish-and-create` — deploy applications  
+- `curl` GraphQL queries — inspect child apps and match results
 
 However, these steps are not required for normal evaluation, since the Orchestrator (port 5290) automates:
 - Module publishing
@@ -300,7 +300,7 @@ curl http://localhost:5290/tournament/match-list
 # Or request via POST (returns JSON)
 curl -X POST http://localhost:5290/linera/tournament/match-list -d '{}' | jq .
 ```
-- The Tournament Simulator automatically:
+The Tournament Simulator automatically:
 - Creates mock brackets for 8 players,
 - Runs through quarter/semi/final rounds,
 - Publishes the Champion and Runner-Up to the on-chain leaderboard.
@@ -344,7 +344,7 @@ Unity Client → Orchestrator API (C# @ port 5290) → Linera Microchains (Rust 
 ## [Full testing video if you see any failures on setup](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
 ---
 
-Contributing
+### 🤝 Contributing
 We welcome contributions! Please feel free to open issues or submit pull requests.
 
 ### 📚 Credits & License
@@ -378,6 +378,7 @@ We welcome contributions! Please feel free to open issues or submit pull request
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
