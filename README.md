@@ -56,8 +56,9 @@ This repository contains the full backend and contract stack:
  🔍 **Searching Onchain** — searching and verifying match results via ChainId / Username.  
  🎮 **Unity integration** — seamless orchestration between gameplay and blockchain logic.
 
-Unity (Client/Server) → Orchestrator API (C#) → Linera Microchains (Rust WASM)
-                                       ↘︎ Leaderboard / Tournament Simulation
+Unity (Client/Server) → Orchestrator API (C#) → Linera Microchains (Rust WASM)  
+               ↘︎ Leaderboard / Tournament Simulation
+
                                   
 - **Unity Lobby / Battle Server:** Off-chain UX; communicates via REST/GraphQL with the orchestrator.  
 - **Orchestrator:** Creates and manages per-match microchains, submits results, and coordinates tournament flow.  
@@ -306,9 +307,12 @@ The Tournament Simulator automatically:
 - Publishes the Champion and Runner-Up to the on-chain leaderboard.
 
 ### 🕹️ Unity demo (prebuilt)
-You can directly test the **Unity-powered Linera Orchestrator demo** without building the Unity project.
-Download the Prebuilt Unity App from Google Drive:  👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing)
-Unzip the folder to your **C:** drive:  `C:\XFighterZone.LDW1\` and `C:\XFighterZone_StressTest.LDW1\`
+You can directly test the **Unity-powered Linera Orchestrator demo** without building the Unity project.  
+Download the Prebuilt Unity App from Google Drive: 👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing)  
+
+Unzip the folder to your **C:** drive:  
+`C:\XFighterZone.LDW1\` and `C:\XFighterZone_StressTest.LDW1\`  
+
 The package contains:
 - `ServerLobby.w1\ServerLobby.exe` — Launches the lobby, matchmaking, and leaderboard services.
 - `ServerBattle.w1\ServerBattle.exe` — Spawns headless matches after matchmaking is complete; handles result submission.
@@ -378,6 +382,7 @@ We welcome contributions! Please feel free to open issues or submit pull request
 > “We believe Linera’s Microchains are not just a performance innovation —  
 > they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive.  
 > Thank you.”
+
 
 
 
