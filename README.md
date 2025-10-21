@@ -7,8 +7,7 @@ Unity delivers immersive real-time gameplay. Linera provides transparent, verifi
 
 ## 📤 Buildathon Submission Checklist 
 - [x] **Repository:** Public and includes full README + Contracts (.wasm) -
-- [x] **Drive Folder:** Docs & Videos publicly accessible ([View](https://drive.google.com/drive/u/0/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF))
-- [X] **Demo Videos:** Uploaded (Battle Demo, Stress Test, Chapter 0 Recap)
+- [x] **Drive Folder:** Docs, Application & Videos demo (Battle Demo, Stress Test, Plan Chapter 0 Recap, Full Testing) publicly accessible ([View](https://drive.google.com/drive/u/0/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF))
 - [X] **Quick Demo Commands:** Validated on a clean environment (Localnet + Conway Testnet)
 - [X] **Unity Build:** Public prebuilt package ([Download](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing))
 - [X] **CHANGELOG.md:** Included to track milestone updates
@@ -379,6 +378,7 @@ We welcome contributions! Please feel free to open issues or submit pull request
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
