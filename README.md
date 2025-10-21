@@ -145,8 +145,7 @@ All other parameters (wallet, storage, keystore) can remain empty if using remot
 ✅ **Unity builds** (Lobby, Battle servers, Client & Client StressTest) are provided separately for evaluation.  
 ✅ **Important:** Two Unity clients cannot run on the same machine — please run them on two separate computers for multiplayer testing.
 
-🧠 Developer Notes & Node Setup
-
+### 🧠 Developer Notes & Node Setup
 For developers who want to interact directly with the Linera GraphQL endpoint (port 8080),
 standard CLI-based deployment and queries can be used instead of the Orchestrator service.
 
@@ -164,7 +163,6 @@ However, these steps are not required for normal evaluation, since the Orchestra
 Before running the Orchestrator, make sure your Linera node configuration matches your environment (Localnet or Conway Testnet).
 
 ### 🧩 Program.cs Configuration
-
 In `Program.cs`, adjust the following flags inside your configuration:
 
 ```csharp
@@ -199,13 +197,14 @@ This folder includes:
 ### 📄 Documents
 1. **XFighterZone Overview (PDF)** —  
    Detailed introduction to the project, including architecture, gameplay concept, and technical roadmap.  
-2. **XFighter Battle Plan- XFighterZone Battle Demonstration** —  
+2. **XFighter Battle Plan / XFighterZone Battle Demonstration (Application)** —  
    Explains the setup, fighter logic, keyboard inputs, Login Sence, Battle Scene, Lobby Scene and code integration behind.
 
 ### 🎬 Videos
 1. **XFighter Battle Demo** — Live gameplay showing on-chain combat and synchronization via Linera microchains.  
-2. **Full Chapter 0 Recap** — Overview of the first development phase, including milestones and completed features.  
-3. **Stress Test (100 Clients / 50 Matches)** — Demonstrates orchestrator scalability, handling multiple simultaneous matches in real time.
+2. **Planning Management Full Chaper 0 Demo** — Overview of the first development phase, including milestones and completed features.  
+3. **XFighterZone MatchMaking StressTest (optional)** — Demonstrates orchestrator scalability, handling multiple simultaneous matches (100 Clients / 50 Matches) at the same time.
+4. **Quick Full Testing if any failures (optional)** — Full workflow if you see any failures when setup note → deloy appchain → run Unity Build → Stress test → Manager Dashboard/Tournament simulation
 
 ## 🚀 Quick Demo & Playtest Resources
 ```
@@ -370,14 +369,6 @@ We welcome contributions! Please feel free to open issues or submit pull request
 - **XFighterZone Files:** [Google Drive](https://drive.google.com/drive/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF?usp=sharing)  
 - **Full Playlists Buildathon Demo:** [https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 ](https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 )
   
-Included
-```
-XFighterZone — Real-time Esports on Linera Microchains (Battle Demo)
-Stress Test (100 Players / 50 Matches)
-Planning Management Full Chaper 0 (Buildathon Demo)
-Quick Full Testing if we see any failures (optional)
-```
-
 ## 👥 Team & Contact
 **Team:** Roystudios / roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
@@ -388,7 +379,6 @@ Quick Full Testing if we see any failures (optional)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
-
 
 
 
