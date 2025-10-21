@@ -170,7 +170,6 @@ StartServiceWhenRemote = false,    // true = Conway Service mode, false = Local 
 ```
 ✅ If using Local Mode:
 Set both flags to false. The node will run locally and the orchestrator will automatically start linera net up.
-
 ✅ If using Testnet Conway:
 Set both flags to true. The orchestrator will skip starting a local network and connect directly to the remote Conway testnet.
 
@@ -325,7 +324,10 @@ Flow:
 5. After battle, ServerBattle → ServerLobby → Orchestrator → On-chain submit → Global Leaderboard update.
 ```
 ⚠️Note: 
-- We've setup the Unity demo so that it can test local matches directly on the same machine.
+- serverListenIp must be the IPv4 address `ipconfig` of the computer running ServerLobby.exe.
+- If you copy the Unity client app to another computer on the same LAN, update that client’s config.json to use the same IP.
+- This allows all clients to connect to the Orchestrator running inside the Server Lobby.
+- For local testing, it’s recommended to keep all Unity apps (ServerLobby, ServerBattle, Client) in the same C:\XFighterZone.LDW1\ folder.
 - If Orchestrator runs in WSL and Unity runs on Windows, ensure Orchestrator binds to 0.0.0.0 or use host networking so clients can reach it.
  
 ### 🎮 Player Account Setup
@@ -366,8 +368,7 @@ Poll until verified:
 Check leaderboard data:
 `curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
 
-### Here the link full testing if you see any failures on setup: 
-[Full testing video](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
+### [Full testing video if you see any failures on setup](https://drive.google.com/file/d/1fgY-iQbCjfWdmJfzpwYZSVIfsukXsv_m/view?usp=sharing)
 ---
 
 Contributing
@@ -411,5 +412,6 @@ Planning Management Full Chaper 0 (Buildathon Demo)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
