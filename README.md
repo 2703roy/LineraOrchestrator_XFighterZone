@@ -133,7 +133,7 @@ You can change these paths if your environment differs (for example, when runnin
 The orchestrator supports both:
 Localnet mode — builds and runs linera net up locally
 Testnet Conway mode — set UseRemoteTestnet = true to connect directly to Linera’s public Conway testnet
-All other parameters (wallet, storage, keystore) can remain empty if using remote mode — the orchestrator will auto-fetch them when available.
+Other parameters (wallet, storage, keystore) can remain empty in remote mode — the orchestrator auto-fetches them when needed.
 
 ---
 
@@ -197,7 +197,7 @@ This folder includes:
 1. **XFighterZone Overview (PDF)** —  
    Detailed introduction to the project, including architecture, gameplay concept, and technical roadmap.  
 2. **XFighter Battle Plan / XFighterZone Battle Demonstration (Application)** —  
-   Explains the setup, fighter logic, keyboard inputs, Login Sence, Battle Scene, Lobby Scene and code integration behind.
+   Explains the setup, fighter logic, keyboard inputs, Login Scene, Battle Scene, Lobby Scene and code integration behind.
 
 ### 🎬 Videos
 1. **XFighter Battle Demo** — Live gameplay showing on-chain combat and synchronization via Linera microchains.  
@@ -324,7 +324,7 @@ Work Flow:
 4. When a match is found, Orchestrator creates a match ChainId (microchain) → spawns ServerBattle headless.
 5. After battle, ServerBattle → ServerLobby → Orchestrator → On-chain submit → Global Leaderboard update.
 ```
-⚠️Note: 
+⚠️ **Note:**  
 - serverListenIp must be the IPv4 address `ipconfig` of the computer running ServerLobby.exe.
 - If you copy the Unity client app to another computer on the same LAN, update that client’s config.json to use the same IP.
 - This allows all clients to connect to the Orchestrator running inside the Server Lobby.
@@ -332,7 +332,7 @@ Work Flow:
 - If Orchestrator runs in WSL and Unity runs on Windows, ensure Orchestrator binds to 0.0.0.0 or use host networking so clients can reach it.
  
 ### 🎮 Player Account Setup
-👉Before launching the Unity client, please create a game account on the official portal:
+ 👉Before launching the Unity client, please create a game account on the official portal:
 1. Open & Click **“Signup”** at the [Signup page](https://xfighterzone.com/register/)
 2. Confirm your registration via email (if prompted)
 3. Once your account is created, you can use the same credentials to log in inside the Unity game client.
@@ -348,7 +348,7 @@ Unity Client → Orchestrator API (C# @ port 5290) → Linera Microchains (Rust 
 We welcome contributions! Please feel free to open issues or submit pull requests.
 
 ### 📚 Credits & License
-- Linera Protocol: [https://github.com/linera-io/linera-protocol](https://github.com/linera-io/linera-protocol?)
+- Linera Protocol: [https://github.com/linera-io/linera-protocol](https://github.com/linera-io/linera-protocol)
 - License: Apache-2.0 components from Linera base code.
 
 ### 🔗 Resource Links
@@ -375,9 +375,10 @@ We welcome contributions! Please feel free to open issues or submit pull request
 **X (Twitter):** @AriesLLC1  
 **Email:** tanlocn282@gmail.com
 
-“We believe Linera’s Microchains are not just a performance innovation —
-they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
-Thank you”
+> “We believe Linera’s Microchains are not just a performance innovation —  
+> they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive.  
+> Thank you.”
+
 
 
 
