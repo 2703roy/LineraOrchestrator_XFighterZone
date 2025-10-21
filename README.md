@@ -213,8 +213,8 @@ cd LineraOrchestrator_XFighterZone
 dotnet run || dotnet run --project LineraOrchestrator -- --demo
 ```
 Then start node and test the endpoints as described below 👇
-### 1. Start the Linera Node and Orchestrator
-In WSL (Ubuntu) or terminal, start the orchestrator and local Linera node:
+### Start the Linera Node and Orchestrator
+1. In WSL (Ubuntu) or terminal, start the orchestrator and local Linera node:
 ```bash
 cd ~/LineraOrchestrator
 curl -sS -X POST http://localhost:5290/linera/start-linera-node | jq .
@@ -226,7 +226,7 @@ Unity apps will connect directly to this orchestrator endpoint (http://localhost
 You can check current leaderboard data:
 `curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
 
-4. Create a Match (Microchain)
+3. Open chain & Create a Match (Microchain)
 ```
 curl -sS -X POST http://localhost:5290/linera/open-and-create \
   -H "Content-Type: application/json" \
@@ -254,18 +254,18 @@ curl -sS -X POST http://localhost:5290/linera/submit-match-result \
     }
   }' | jq .
 ```
-After submission, the result is committed on-chain and broadcasted to the leaderboard.
+5. After submission, the result is committed on-chain and broadcasted to the leaderboard.
 Check leaderboard data:
 `curl -sS -X POST http://localhost:5290/linera/get-leaderboard-data | jq .`
 
-5. Polling / verify — Check leaderboard received results
+6. Polling / verify — Check leaderboard received results
 After submitting, the system may need a cycle to verify & replicate to the leaderboard. Use the verify (polling) command:
 ```
 curl -sS -X POST http://localhost:5290/linera/verify-match-result -d '{"matchId":"match-test"}' | jq .
 ```
 If the API returns verified: true (or similar), the record has been posted to the leaderboard.
 
-🧰 Helper Debug Commands (Optional)
+ 🧰 Helper Debug Commands (Optional)
 ```
 #Check service & config if you see "is_true" ready to go
 curl -sS -X POST http://localhost:5290/linera/stop-linera-service | jq .
@@ -310,8 +310,7 @@ curl -X POST http://localhost:5290/linera/tournament/match-list -d '{}' | jq .
 
 ### 🕹️ Unity demo (prebuilt)
 You can directly test the **Unity-powered Linera Orchestrator demo** without building the Unity project.
-### Download the Prebuilt Unity App
-Download from Google Drive:  👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing)
+Download the Prebuilt Unity App from Google Drive:  👉 [XFighterZone_Unity_Build.zip](https://drive.google.com/drive/folders/1ZiQi6FmIcawcz1K0RHRV2Ysc5XxgAciP?usp=sharing)
 Unzip the folder to your **C:** drive:  `C:\XFighterZone.LDW1\` and `C:\XFighterZone_StressTest.LDW1\`
 The package contains:
 - `ServerLobby.w1\ServerLobby.exe` — Launches the lobby, matchmaking, and leaderboard services.
@@ -390,6 +389,7 @@ Quick Full Testing if we see any failures (optional)
 “We believe Linera’s Microchains are not just a performance innovation —
 they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive. 
 Thank you”
+
 
 
 
