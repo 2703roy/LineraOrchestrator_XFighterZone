@@ -1,6 +1,7 @@
 # ⚔️ XFighterZone — Real-Time Gaming & Prediction Metaverse on Linera
 
-🎥 Watch Full Demo Video
+## 🎬 Live Demo
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 - Frontend: [Unity Game Client (Windows, MacOS, Linux)](https://drive.google.com/drive/folders/1c2bNHDPvi4NdZPiV9lNEmqXDyuo8FHiS?usp=sharing)
 - Backend: Linera Orchestrator - http://localhost:5290, Game Server: UDP `your-ip`:1111
 
@@ -104,6 +105,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
