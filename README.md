@@ -43,20 +43,19 @@ After 15-20 minutes, system will be ready.
 
 ## Major Upgrades (Wave 2)
 **Enhanced Architecture**
-- Dual Priority Queues: High-priority Open Chain (150 slots) and low-priority Submit Match (500 slots) for optimized task flow.
+- Dual Priority Queues: High-priority request Open Match Chain (150 slots) and low-priority Submit Match (500 slots) for optimized task flow.
 - Persistent & Atomic Queue: File-based durable storage ensures no data loss and guarantees consistency through atomic .tmp replacements.
 
 **Tournament System**
 - Automated Leaderboard Snapshot: Captures top 8 players for bracket creation.
 - Deterministic Bracket Generation: Ensures fair and reproducible matchups.
 - Progressive Rounds: Quarterfinals → Semifinals → Finals.
-- Dedicated Mutations: recordTournamentScore operations ensure precise tournament state updates
+- Dedicated Mutations & Query: recordTournamentScore operations ensure precise tournament state updates
 
 **Performance & Stability**
 - +500% Throughput: Achieved via multi-queue architecture compared to single-queue models.
 - Optimized Worker Management: Two workers per queue with only ~4% CPU usage.
-- Graceful Shutdown & Recovery: Safe queue draining on exit with full state restoration.
-- Enhanced Monitoring: Real-time queue metrics and detailed logging for diagnostics.
+- Enhanced Monitoring: Real-time queue metrics and detailed logging for diagnostics and safe recovery with full state restoration.
 
 ## System Architecture
 Multi-Chain Gaming Infrastructure
@@ -116,3 +115,4 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
