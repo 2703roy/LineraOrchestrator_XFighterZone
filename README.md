@@ -43,21 +43,21 @@ After 15-20 minutes, system will be ready.
 
 ## Major Upgrades (Wave 2)
 **Enhanced Architecture**
-Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
-Persistent Queue: File-based durable queue prevents data loss on restart
-Atomic Operations: Guaranteed consistency with .tmp file replacement
+- Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
+- Persistent Queue: File-based durable queue prevents data loss on restart
+- Atomic Operations: Guaranteed consistency with .tmp file replacement
 
 **Tournament System**
-Leaderboard Snapshot: Automatically captures top 8 players for brackets
-Bracket Generation: Deterministic random bracket creation
-Round Management: Quarterfinals → Semifinals → Finals progression
-Tournament Mutations: Dedicated recordTournamentScore operations
+- Leaderboard Snapshot: Automatically captures top 8 players for brackets
+- Bracket Generation: Deterministic random bracket creation
+- Round Management: Quarterfinals → Semifinals → Finals progression
+- Tournament Mutations: Dedicated recordTournamentScore operations
 
 **Performance & Stability**
-+500% Throughput: Multi-queue architecture vs single queue
-Worker Management: 2 workers per queue (4% CPU utilization)
-Graceful Shutdown: Proper queue draining and recovery
-Enhanced Monitoring: Real-time queue status and detailed logging
+- +500% Throughput: Multi-queue architecture vs single queue
+- Worker Management: 2 workers per queue (4% CPU utilization)
+- Graceful Shutdown: Proper queue draining and recovery
+- Enhanced Monitoring: Real-time queue status and detailed logging
 
 ## System Architecture
 Multi-Chain Gaming Infrastructure
@@ -117,6 +117,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
