@@ -28,7 +28,7 @@ After 15-20 minutes, system will be ready.
 | **Wave 1** | MVP Foundation Gameplay, Onchain Integration | ✅ Complete |
 | **Wave 2** | Multiplatform easy for tester, Friend List, Hero System, Normal/Rank Mode | ✅ Complete |
 | **Wave 3** | Tournament Bracket Expansion, Users chain & Cross-chain Betting | 🔄 In Progress |
-| **Wave 4** | Shaping the Metaverse, Betting System & Cross-chain Assets  | 🔄 Planned |
+| **Wave 4** | Shaping the Metaverse, Betting System & Cross-chain Assets  | 🔄 In Progress |
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Metaverse Foundation, Optimization, Full Decentralization & Social Features | ⏳ Planned |
 
@@ -115,4 +115,5 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
