@@ -59,22 +59,24 @@ After 15-20 minutes, system will be ready.
 ## System Architecture
 Multi-Chain Gaming Infrastructure
 ```text
-┌─────────────────────────────────────────────────────────────────┐
-│                    PUBLISHER CHAIN (Wave 2)                     │
-├─────────────────┬─────────────────┬─────────────────────────────┤
-│   TOURNAMENT    │   USER-XFIGHTER │    GLOBAL LEADERBOARD       │
-│     APP         │     MODULE      │        APP                  │
-│                 │                 │                             │
-│ - Tournament    │ - Bytecode for  │ - Real-time rankings        │
-│   management    │   user chain    │ - Cross-tournament stats    │
-│ - Betting engine│   deployment    │ - Player statistics         │
-│ - Cross-chain   │                 │                             │
-│   messaging     │                 │                             │
-└─────────────────┴─────────────────┴─────────────────────────────┘
-         │                   │                        │
-         │ Cross-chain       │ Module reference       │ Cross-chain
-         │ messages          │ for deployment         │ queries
-         ▼                   ▼                        ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                    PUBLISHER CHAIN (Wave 2)                          │
+├─────────────────┬─────────────────┬─────────────────┬────────────────┤
+│   TOURNAMENT    │   USER-XFIGHTER │    XFIGHTER     │  GLOBAL        │
+│     APP         │     MODULE      │     APP         │ LEADERBOARD    │
+│                 │                 │                 │   APP          │
+│ - Tournament    │ - Bytecode for  │ - Matchmaking   │ - Real-time    │
+│   management    │   user chain    │ - Real-time     │ rankings       │
+│ - Betting engine│   deployment    │    match        │ - Cross-       │
+│ - Cross-chain   │                 │ - Battle results│ tournament     │
+│   messaging     │                 │   recording     │ - Battle results│ 
+│                 │                 │ - Cross-chain   │ - Player       │
+│                 │                 │  coordination   │ statistics     │
+└─────────────────┴─────────────────┴─────────────────┴────────────────┘
+         │                   │              │              │
+         │ Cross-chain       │ Module       │ Cross-app    │ Cross-chain
+         │ messages          │ reference    │ battle events│ queries
+         ▼                   ▼              ▼              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                    USER CHAINS (Independent) (Wave 3)           │
 ├─────────────────┬─────────────────┬─────────────────────────────┤
@@ -84,11 +86,13 @@ Multi-Chain Gaming Infrastructure
 │  USER-XFIGHTER  │  USER-XFIGHTER  │  USER-XFIGHTER              │
 │     APP         │     APP         │     APP                     │
 │                 │                 │                             │
-│ - Asset         │ - Asset         │   - Asset management        │
-│management       │ management      │  management                 │
-│ - Bet processing│ - Bet processing│ - Bet processing            │
-│ - Transaction   │ - Transaction   │ - Transaction               │
-│   history       │   history       │   history                   │
+│ - Asset         │ - Asset         │ - Asset management          │
+│   management    │   management    │ - Bet processing            │
+│ - Bet processing│ - Bet processing│ - Transaction history       │
+│ - Transaction   │ - Transaction   │ - Battle participation      │
+│   history       │   history       │   authentication            │
+│ - Battle        │ - Battle        │                             │
+│   participation │   participation │                             │
 └─────────────────┴─────────────────┴─────────────────────────────┘
 ```
 ## Real-Time Gaming Flow 
@@ -96,10 +100,11 @@ Multi-Chain Gaming Infrastructure
 Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust WASM)
 
 1. Player Login → User chain authentication
-2. Matchmaking → Tournament chain coordination  
-3. Real-time Battle → Unity gameplay with live physics
-4. Result Verification → On-chain score recording
-5. Automatic Payouts → Cross-chain betting settlements
+2. StartMatchmaking → XFighter App on Publisher Chain
+3. Leaderboard snapshot → Tournament chain coordination  
+4. Real-time Battle → Unity gameplay with live physics
+5. Result Verification → On-chain score recording
+6. Automatic Payouts → Cross-chain betting settlements
 6. Leaderboard Update → Global ranking aggregation
 ```
 ---
@@ -114,6 +119,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
