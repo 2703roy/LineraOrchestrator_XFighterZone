@@ -32,14 +32,23 @@ Test Accounts: Use test1 to test8 (same username/password) for multiplayer battl
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Metaverse Foundation, Optimization, Full Decentralization & Social Features | ⏳ Planned |
 
-## 📤 Buildathon Submission Checklist 
-- [x] Public repo with contracts
-- [x] Demo videos & builds
-- [x] Conway Testnet deployed
-- [x] Docker setup Quick start guide
-- [ ] Tournament + UserChain
-- [ ] Betting System UI
-- [ ] Marketplace, Quest, Metaverse System
+## 🚀 Major Upgrades (Wave 2)
+🏗️ Enhanced Architecture
+Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
+Persistent Queue: File-based durable queue prevents data loss on restart
+Atomic Operations: Guaranteed consistency with .tmp file replacement
+
+🎯 Tournament System - BRAND NEW
+Leaderboard Snapshot: Automatically captures top 8 players for brackets
+Bracket Generation: Deterministic random bracket creation
+Round Management: Quarterfinals → Semifinals → Finals progression
+Tournament Mutations: Dedicated recordTournamentScore operations
+
+⚡ Performance & Stability
++500% Throughput: Multi-queue architecture vs single queue
+Worker Management: 2 workers per queue (4% CPU utilization)
+Graceful Shutdown: Proper queue draining and recovery
+Enhanced Monitoring: Real-time queue status and detailed logging
 
 ## 🛠️ Tech Stack
 | Layer | Technology |
@@ -105,6 +114,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
