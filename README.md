@@ -43,21 +43,20 @@ After 15-20 minutes, system will be ready.
 
 ## Major Upgrades (Wave 2)
 **Enhanced Architecture**
-- Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
-- Persistent Queue: File-based durable queue prevents data loss on restart
-- Atomic Operations: Guaranteed consistency with .tmp file replacement
+- Dual Priority Queues: High-priority Open Chain (150 slots) and low-priority Submit Match (500 slots) for optimized task flow.
+- Persistent & Atomic Queue: File-based durable storage ensures no data loss and guarantees consistency through atomic .tmp replacements.
 
 **Tournament System**
-- Leaderboard Snapshot: Automatically captures top 8 players for brackets
-- Bracket Generation: Deterministic random bracket creation
-- Round Management: Quarterfinals → Semifinals → Finals progression
-- Tournament Mutations: Dedicated recordTournamentScore operations
+- Automated Leaderboard Snapshot: Captures top 8 players for bracket creation.
+- Deterministic Bracket Generation: Ensures fair and reproducible matchups.
+- Progressive Rounds: Quarterfinals → Semifinals → Finals.
+- Dedicated Mutations: recordTournamentScore operations ensure precise tournament state updates
 
 **Performance & Stability**
-- +500% Throughput: Multi-queue architecture vs single queue
-- Worker Management: 2 workers per queue (4% CPU utilization)
-- Graceful Shutdown: Proper queue draining and recovery
-- Enhanced Monitoring: Real-time queue status and detailed logging
+- +500% Throughput: Achieved via multi-queue architecture compared to single-queue models.
+- Optimized Worker Management: Two workers per queue with only ~4% CPU usage.
+- Graceful Shutdown & Recovery: Safe queue draining on exit with full state restoration.
+- Enhanced Monitoring: Real-time queue metrics and detailed logging for diagnostics.
 
 ## System Architecture
 Multi-Chain Gaming Infrastructure
@@ -117,6 +116,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
