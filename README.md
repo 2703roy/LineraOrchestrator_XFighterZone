@@ -19,7 +19,7 @@ chmod +x start-docker.sh
 ./start-docker.sh
 ```
 After 15-20 minutes, system will be ready.
-[Client Build Link (Windown & MacOs](https://drive.google.com/drive/folders/1c2bNHDPvi4NdZPiV9lNEmqXDyuo8FHiS?usp=sharing)
+[Client Build Link (Windown & MacOS)](https://drive.google.com/drive/folders/1c2bNHDPvi4NdZPiV9lNEmqXDyuo8FHiS?usp=sharing)
 
 ## 🗓️ Development Roadmap
 
@@ -108,7 +108,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ---
 ### Note for tester/reviewer
 - **Test Accounts**: Use test1 to test8 (same username/password) for multiplayer battles.
-- **Database Access**: Due to the SQL service provider’s security policy, the friend system requires access from an authorized public IP. If you encounter any issues connecting to the MySqlConnector host during testing, please provide your public IP so it can be whitelisted for the best experience. This will be fix at next wave.
+- **Database Access**: Due to the SQL service provider’s security policy, the friend system requires access from an authorized public IP. If you encounter any issues connecting to the MySqlConnector host during testing, please provide your public IP so it can be whitelisted for the best experience. This will be replace by userchain on next wave.
 
 ### Media & Technical Visuals
 - **XFighterZone Files:** [Google Drive](https://drive.google.com/drive/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF?usp=sharing)  
@@ -117,6 +117,7 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
