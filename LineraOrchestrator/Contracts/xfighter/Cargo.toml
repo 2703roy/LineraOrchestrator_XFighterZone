@@ -1,0 +1,39 @@
+# /mnt/d/workspace/linera-protocol/examples/xfighter/Cargo.toml
+[package]
+name = "xfighter"
+version = "0.1.0"
+authors = ["Linera <contact@linera.io>"]
+edition = "2021"
+
+[dependencies]
+async-graphql.workspace = true
+futures.workspace = true
+linera-sdk.workspace = true
+serde_json.workspace = true
+serde = { version = "1.0", features = ["derive"] }
+linera-views.workspace = true
+leaderboard = { path = "../leaderboard", default-features = false }
+tournament = { path = "../tournament", default-features = false }
+hex = "0.4"
+base64 = "0.21"
+log = "0.4"
+bcs = "0.1"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+linera-sdk = { workspace = true, features = ["test", "wasmer"] }
+tokio = { workspace = true, features = ["rt", "sync"] }
+
+[dev-dependencies]
+assert_matches.workspace = true
+linera-sdk = { workspace = true, features = ["test"] }
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "xfighter_contract"
+path = "src/contract.rs"
+
+[[bin]]
+name = "xfighter_service"
+path = "src/service.rs"

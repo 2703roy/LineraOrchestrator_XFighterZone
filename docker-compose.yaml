@@ -1,0 +1,33 @@
+﻿services:
+  linera-orchestrator:
+    build:
+      context: ./LineraOrchestrator
+      dockerfile: Dockerfile
+    ports:
+      - "5290:5290"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_URLS=http://+:5290
+      - LINERA_DOCKER_MODE=true
+    volumes:
+      - ./LineraOrchestrator/wasm:/app/wasm:ro
+      - ./LineraOrchestrator/data:/app/data
+      - ./LineraOrchestrator/logs:/app/logs
+      - ./LineraOrchestrator/linera_testnet:/root/.linera_testnet
+    restart: unless-stopped
+
+  serverlobby:
+    build:
+      context: ./Server
+      dockerfile: Dockerfile
+    ports:
+      - "1111:1111"
+      - "1111:1111/udp" 
+      - "10000-10100:10000-10100"
+      - "10000-10100:10000-10100/udp"
+    environment:
+      - SERVER_IP=${SERVER_IP:-192.168.1.51}
+    command: ["-serverIP", "${SERVER_IP}"]
+    volumes:
+      - ./Server/server_data:/opt/server/data
+    restart: unless-stopped

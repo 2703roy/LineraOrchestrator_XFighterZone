@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+*.sln.user
+*.suo
+
+# Build artifacts
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+
+# NuGet
+.nuget/
+*.nupkg
+packages/
+
+# Others
+*.orig
+*.user
