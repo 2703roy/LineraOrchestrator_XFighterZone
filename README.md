@@ -25,7 +25,7 @@ Test Accounts: Use test1 to test8 (same username/password) for multiplayer battl
 | Wave | Focus | Status |
 |------|--------|--------|
 | **Wave 1** | MVP Foundation Gameplay, Onchain Integration | ✅ Complete |
-| **Wave 2** | Multiplatform easy for tester, Friend List, Hero System | ✅ Complete |
+| **Wave 2** | Multiplatform easy for tester, Friend List, Hero System, Normal/Rank Mode | ✅ Complete |
 | **Wave 3** | Tournament Bracket Expansion, Users chain & Cross-chain Betting | 🔄 In Progress |
 | **Wave 4** | Shaping the Metaverse, Betting System & Cross-chain Assets  | 🔄 Planned |
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
@@ -35,11 +35,10 @@ Test Accounts: Use test1 to test8 (same username/password) for multiplayer battl
 - [x] Public repo with contracts
 - [x] Demo videos & builds
 - [x] Conway Testnet deployed
-- [x] Docker setup
-- [x] Quick start guide
-- [ ] Tournament + Userchain
-- [ ]  Betting System
-- [ ]  Marketplace, Quest, Metaverse System
+- [x] Docker setup Quick start guide
+- [ ] Tournament + UserChain
+- [ ] Betting System UI
+- [ ] Marketplace, Quest, Metaverse System
 
 ## 🛠️ Tech Stack
 | Layer | Technology |
@@ -106,9 +105,6 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
 
-> “We believe Linera’s Microchains are not just a performance innovation —  
-> they are a new canvas for human interaction. XFighterZone connects real-time esports, prediction logic, and metaverse economies — where blockchain becomes truly alive.  
-> Thank you.”
 
 
 
