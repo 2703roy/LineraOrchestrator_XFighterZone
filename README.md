@@ -95,7 +95,7 @@ Multi-Chain Gaming Infrastructure
 ```
 ## Real-Time Gaming Flow 
 ```text
-Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (Rust WASM)
+Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust WASM)
 
 1. Player Login → User chain authentication
 2. Matchmaking → Tournament chain coordination  
@@ -116,55 +116,3 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
