@@ -11,7 +11,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --float-mode=Fast
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -30,7 +30,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --float-mode=Fast
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -47,7 +47,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -83,7 +83,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -119,7 +119,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -234,7 +234,7 @@ Library: E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\Unity\Project\XFighterZone - MainVersion\Temp\Burst
---key-folder=E:/Apps/AppSetup/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
+--key-folder=E:/Unity/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport
 --decode-folder=E:\Unity\Project\XFighterZone - MainVersion\Library\Burst
 --output=E:\Unity\Project\XFighterZone - MainVersion\Temp\BurstOutput\Data\Plugins\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
