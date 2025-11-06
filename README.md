@@ -20,11 +20,6 @@ chmod +x start-docker.sh
 
 # After 15-20 minutes, system will be ready.
 ```
-
-### Note for tester/reviewer
-- Test Accounts: Use test1 to test8 (same username/password) for multiplayer battles.
-- Database Access: Due to the SQL service provider’s security policy, the friend system requires access from an authorized public IP. If you encounter any issues connecting to the MySqlConnector host during testing, please provide your public IP so it can be whitelisted for the best experience.
-
 ## 🗓️ Development Roadmap
 
 | Wave | Focus | Status |
@@ -36,25 +31,7 @@ chmod +x start-docker.sh
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Metaverse Foundation, Optimization, Full Decentralization & Social Features | ⏳ Planned |
 
-## 🚀 Major Upgrades (Wave 2)
-🏗️ Enhanced Architecture
-Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
-Persistent Queue: File-based durable queue prevents data loss on restart
-Atomic Operations: Guaranteed consistency with .tmp file replacement
-
-🎯 Tournament System - BRAND NEW
-Leaderboard Snapshot: Automatically captures top 8 players for brackets
-Bracket Generation: Deterministic random bracket creation
-Round Management: Quarterfinals → Semifinals → Finals progression
-Tournament Mutations: Dedicated recordTournamentScore operations
-
-⚡ Performance & Stability
-+500% Throughput: Multi-queue architecture vs single queue
-Worker Management: 2 workers per queue (4% CPU utilization)
-Graceful Shutdown: Proper queue draining and recovery
-Enhanced Monitoring: Real-time queue status and detailed logging
-
-## 🛠️ Tech Stack
+## Tech Stack
 | Layer | Technology |
 |-------|-------------|
 | **Blockchain** | Linera Protocol (Conway Testnet) |
@@ -63,7 +40,25 @@ Enhanced Monitoring: Real-time queue status and detailed logging
 | **Game Server** | Custom UDP Server, Matchmaking & Real-time Networking |
 | **Infrastructure** | Docker, Multi-wallet Management |
 
-## 🏗️ System Architecture
+## Major Upgrades (Wave 2)
+**Enhanced Architecture**
+Dual Priority Queues: Separate high-priority Open Chain (150 slots) and low-priority Submit Match (500 slots)
+Persistent Queue: File-based durable queue prevents data loss on restart
+Atomic Operations: Guaranteed consistency with .tmp file replacement
+
+**Tournament System**
+Leaderboard Snapshot: Automatically captures top 8 players for brackets
+Bracket Generation: Deterministic random bracket creation
+Round Management: Quarterfinals → Semifinals → Finals progression
+Tournament Mutations: Dedicated recordTournamentScore operations
+
+**Performance & Stability**
++500% Throughput: Multi-queue architecture vs single queue
+Worker Management: 2 workers per queue (4% CPU utilization)
+Graceful Shutdown: Proper queue draining and recovery
+Enhanced Monitoring: Real-time queue status and detailed logging
+
+## System Architecture
 Multi-Chain Gaming Infrastructure
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
@@ -110,14 +105,18 @@ Unity Client → Game Server → Orchestrator API (C#) → Linera Microchains (R
 6. Leaderboard Update → Global ranking aggregation
 ```
 ---
+### Note for tester/reviewer
+- **Test Accounts**: Use test1 to test8 (same username/password) for multiplayer battles.
+- **Database Access**: Due to the SQL service provider’s security policy, the friend system requires access from an authorized public IP. If you encounter any issues connecting to the MySqlConnector host during testing, please provide your public IP so it can be whitelisted for the best experience. This will be fix at next wave.
 
-### 🎥 Media & Technical Visuals
+### Media & Technical Visuals
 - **XFighterZone Files:** [Google Drive](https://drive.google.com/drive/folders/1LuaF3wnbUNSHbUYezlq1Em-Vj9wC2cMF?usp=sharing)  
 - **Full Playlists Buildathon Demo:** [https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 ](https://youtu.be/tf6PkybCmtI?si=ZZ2fSCO7kMLJCqa5 )
   
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
