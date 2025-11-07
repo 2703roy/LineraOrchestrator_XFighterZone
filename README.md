@@ -21,7 +21,7 @@ chmod +x start-docker.sh
 After 15-20 minutes, system will be ready.
 [Client Build Link (Windown & MacOS)](https://drive.google.com/drive/folders/1c2bNHDPvi4NdZPiV9lNEmqXDyuo8FHiS?usp=sharing)
 
-## 🗓️ Development Roadmap
+## Development Roadmap
 
 | Wave | Focus | Status |
 |------|--------|--------|
@@ -130,6 +130,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
