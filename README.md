@@ -47,10 +47,12 @@ After 15-20 minutes, system will be ready.
 - Real-time Ranking System - Dynamic score calculation & cross-chain queries
 - Tournament Infrastructure - Ready for user chain deployment with battle result processing
 - Enhanced Multi-Queue Architecture - Dual priority queues (150 high-priority Open Match Chain slots, 500 low-priority Submit Match slots)
+
 **Advanced Tournament System**
 - Leaderboard Snapshot & Deterministic Bracket Generation - Ensures fair, reproducible matchups
 - Progressive Tournament Rounds - Quarterfinals → Semifinals → Finals progression
 - Dedicated Tournament Operations - recordTournamentScore mutations for precise state management
+
 **Performance & Stability**
 - +500% Throughput - Optimized multi-queue architecture vs single-queue models
 - Optimized Resource Usage - Two workers per queue with ~4% CPU utilization
@@ -124,6 +126,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
