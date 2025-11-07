@@ -5,7 +5,8 @@
     <img src="https://img.youtube.com/vi/121FG4qHrTo/maxresdefault.jpg" width="720" alt="Watch the demo">
   </a>
 </p>
-Production Status: Full test on Conway Testnet with 8 demo accounts, kindly use test1 to test8 (same username/password) for multiplayer battles
+
+Full test on Conway Testnet with 8 demo accounts, kindly use `test1` to `test8` (same username/password) for multiplayer battles
 
 ## ⚡ Quick Start 
 ```text
@@ -103,3 +104,4 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
