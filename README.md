@@ -41,7 +41,7 @@ After 15-20 minutes, system will be ready.
 | **Game Server** | Custom UDP Server, Matchmaking & Real-time Networking |
 | **Infrastructure** | Docker, Multi-wallet Management |
 
-## Wave 2 Major Upgrades:
+## Wave 2 — Major Upgrades:
 - Xfighter-Leaderboard integration - Cross-app communication
 - Real-time ranking system - Score calculation & queries
 - Tournament infrastructure - Ready for user chain deployment
@@ -61,7 +61,7 @@ After 15-20 minutes, system will be ready.
 - Optimized Worker Management: Two workers per queue with only ~4% CPU usage.
 - Enhanced Monitoring: Real-time queue metrics and detailed logging for diagnostics and safe recovery with full state restoration.
 
-### Wave 3:
+### Wave 3 — 🔄 In Progress:
 - User Chain deployment - Deploy USER-XFIGHTER apps
 - Cross-chain battle flow - User Chain → Publisher Chain messaging
 - Asset management - User wallet & bet processing
@@ -130,6 +130,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
