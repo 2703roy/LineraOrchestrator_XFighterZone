@@ -1,5 +1,5 @@
 # ⚔️ XFighterZone — Real-Time Gaming & Prediction Metaverse on Linera
-## 🎬 Live Demo
+## Live Demo
 <p align="center">
   <a href="https://www.youtube.com/watch?v=121FG4qHrTo">
     <img src="https://img.youtube.com/vi/121FG4qHrTo/maxresdefault.jpg" width="720" alt="Watch the demo">
@@ -103,30 +103,3 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
