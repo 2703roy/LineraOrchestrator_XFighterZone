@@ -1,5 +1,5 @@
 # ⚔️ XFighterZone — Real-Time Gaming & Prediction Metaverse on Linera
-
+```markdown
 ## 🎬 Live Demo
 <p align="center">
   <a href="https://www.youtube.com/watch?v=121FG4qHrTo">
@@ -7,7 +7,7 @@
   </a>
 </p>
 Production Status: Full test on Conway Testnet with 8 demo accounts, kindly use test1 to test8 (same username/password) for multiplayer battles
-
+```
 ## ⚡ Quick Start 
 ```text
 # Clone repository
@@ -40,10 +40,8 @@ After 15-20 minutes, system will be ready.
 | **Wave 4** | Metaverse Lobby, Prediction Bet System & Cross-chain Asset Management  | 🔄 In Progress |
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Full Metaverse: Decentralization & Social Features | ⏳ Planned |
-
-```markdown
 **Wave 2** Major upgrades at [CHANGELOG.md](https://github.com/2703roy/LineraOrchestrator_XFighterZone/blob/main/CHANGELOG.md).
-```
+
 ## System Architecture
 Multi-Chain Gaming Infrastructure
 ```text
@@ -106,6 +104,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
