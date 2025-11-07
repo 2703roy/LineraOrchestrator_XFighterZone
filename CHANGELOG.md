@@ -1,12 +1,13 @@
-## 🚀 Milestone Roadmap
-| Wave | Goal | Status |
-|------|------|---------|
-| **Wave 1** | Linera Core Orchestrator, Unity Gameplay, UI & Onchain Integration| ✅ Completed |
-| **Wave 2** | UI/UX improvements (Friend List, Hero System) | 🔄 In Progress |
-| **Wave 3** | Tournament Bracket Expansion | ⏳ Planned |
-| **Wave 4** | Shaping the Metaverse, Betting System & Cross-chain Assets | ⏳ Planned |
-| **Wave 5** | Marketplace / Prediction Pool | ⏳ Planned |
-| **Wave 6** | Metaverse & Orchestration Upgrade | ⏳ Planned |
+## Development Roadmap
+
+| Wave | Focus | Status |
+|------|--------|--------|
+| **Wave 1** | MVP Foundation: Core Gameplay, On-chain Integration | ✅ Complete |
+| **Wave 2** | Multiplatform Support, Friend System, Hero System, Normal/Rank Modes | ✅ Complete |
+| **Wave 3** | Tournament Expansion, User Chains & Cross-chain Betting | 🔄 In Progress |
+| **Wave 4** | Metaverse Lobby, Prediction Bet System & Cross-chain Asset Management  | 🔄 In Progress |
+| **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
+| **Wave 6** | Full Metaverse: Decentralization & Social Features | ⏳ Planned |
 
 # Changelog
 
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 
 ## [v0.1.0] - 2025-10-20
 - Initial public release for Linera Buildathon.
+
 
 
 
