@@ -1,5 +1,4 @@
 # ⚔️ XFighterZone — Real-Time Gaming & Prediction Metaverse on Linera
-```markdown
 ## 🎬 Live Demo
 <p align="center">
   <a href="https://www.youtube.com/watch?v=121FG4qHrTo">
@@ -7,7 +6,7 @@
   </a>
 </p>
 Production Status: Full test on Conway Testnet with 8 demo accounts, kindly use test1 to test8 (same username/password) for multiplayer battles
-```
+
 ## ⚡ Quick Start 
 ```text
 # Clone repository
@@ -104,6 +103,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
