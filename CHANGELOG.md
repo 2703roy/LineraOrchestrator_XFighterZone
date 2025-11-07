@@ -1,5 +1,6 @@
-## Development Roadmap
-
+# Changelog
+All notable changes to this project will be documented in this file.
+**Development Roadmap**
 | Wave | Focus | Status |
 |------|--------|--------|
 | **Wave 1** | MVP Foundation: Core Gameplay, On-chain Integration | ✅ Complete |
@@ -9,9 +10,7 @@
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Full Metaverse: Decentralization & Social Features | ⏳ Planned |
 
-# Changelog
 
-All notable changes to this project will be documented in this file.
 ### Wave 1
 - Initial Buildathon submission: Orchestrator, Contracts (xfighter, leaderboard, tournament).
 - Included precompiled .wasm artifacts and Quick Demo resources.
@@ -37,6 +36,7 @@ All notable changes to this project will be documented in this file.
 - Cross-chain Battle Flow - User Chain → Publisher Chain messaging pipeline
 - Asset Management System - User wallet integration & bet processing
 - Battle Authentication - Secure chain-to-chain verification protocols
+
 
 
 
