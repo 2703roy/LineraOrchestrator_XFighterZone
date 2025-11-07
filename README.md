@@ -41,7 +41,12 @@ After 15-20 minutes, system will be ready.
 | **Game Server** | Custom UDP Server, Matchmaking & Real-time Networking |
 | **Infrastructure** | Docker, Multi-wallet Management |
 
-## Major Upgrades (Wave 2)
+## Wave 2 Major Upgrades:
+- Xfighter-Leaderboard integration - Cross-app communication
+- Real-time ranking system - Score calculation & queries
+- Tournament infrastructure - Ready for user chain deployment
+- Battle result processing - Match recording & statistics
+- 
 **Enhanced Architecture**
 - Dual Priority Queues: High-priority request Open Match Chain (150 slots) and low-priority Submit Match (500 slots) for optimized task flow.
 - Persistent & Atomic Queue: File-based durable storage ensures no data loss.
@@ -56,6 +61,12 @@ After 15-20 minutes, system will be ready.
 - Optimized Worker Management: Two workers per queue with only ~4% CPU usage.
 - Enhanced Monitoring: Real-time queue metrics and detailed logging for diagnostics and safe recovery with full state restoration.
 
+### Wave 3:
+- User Chain deployment - Deploy USER-XFIGHTER apps
+- Cross-chain battle flow - User Chain → Publisher Chain messaging
+- Asset management - User wallet & bet processing
+- Battle authentication - Secure chain-to-chain verification
+
 ## System Architecture
 Multi-Chain Gaming Infrastructure
 ```text
@@ -65,35 +76,35 @@ Multi-Chain Gaming Infrastructure
 │   TOURNAMENT    │   USER-XFIGHTER │    XFIGHTER     │  GLOBAL        │
 │     APP         │     MODULE      │     APP         │ LEADERBOARD    │
 │                 │                 │                 │   APP          │
+├─────────────────┼─────────────────┼─────────────────┼────────────────┤
 │ - Tournament    │ - Bytecode for  │ - Matchmaking   │ - Real-time    │
 │   management    │   user chain    │ - Real-time     │ rankings       │
-│ - Betting engine│   deployment    │    match        │ - Cross-       │
-│ - Cross-chain   │                 │ - Battle results│ tournament     │
-│   messaging     │                 │   recording     │ - Battle results│ 
-│                 │                 │ - Cross-chain   │ - Player       │
-│                 │                 │  coordination   │ statistics     │
+│ - Betting       │   deployment    │   match         │ - Cross-chain  │
+│   engine        │                 │ - Battle results│   statistics   │
+│ - Cross-chain   │                 │   recording     │ - Player stats │
+│   messaging     │                 │ - Cross-chain   │                │
+│                 │                 │   coordination  │                │
 └─────────────────┴─────────────────┴─────────────────┴────────────────┘
          │                   │              │              │
          │ Cross-chain       │ Module       │ Cross-app    │ Cross-chain
-         │ messages          │ reference    │ battle events│ queries
+         │ messages          │ reference    │ calls        │ queries
+         │ (Wave 3)          │ (Wave 3)     │ (Active)     │ (Active)
          ▼                   ▼              ▼              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    USER CHAINS (Independent) (Wave 3)           │
-├─────────────────┬─────────────────┬─────────────────────────────┤
-│   USER 1        │   USER 2        │    USER N                   │
-│   CHAIN         │   CHAIN         │    CHAIN                    │
-├─────────────────┼─────────────────┼─────────────────────────────┤
-│  USER-XFIGHTER  │  USER-XFIGHTER  │  USER-XFIGHTER              │
-│     APP         │     APP         │     APP                     │
-│                 │                 │                             │
-│ - Asset         │ - Asset         │ - Asset management          │
-│   management    │   management    │ - Bet processing            │
-│ - Bet processing│ - Bet processing│ - Transaction history       │
-│ - Transaction   │ - Transaction   │ - Battle participation      │
-│   history       │   history       │   authentication            │
-│ - Battle        │ - Battle        │                             │
-│   participation │   participation │                             │
-└─────────────────┴─────────────────┴─────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                    USER CHAINS (Wave 3 - Planned)                    │
+├─────────────────┬─────────────────┬─────────────────┬────────────────┤
+│   USER 1        │   USER 2        │    USER N       │   BATTLE FLOW  │
+│   CHAIN         │   CHAIN         │    CHAIN        │   (Wave 3)     │
+├─────────────────┼─────────────────┼─────────────────┼────────────────┤
+│  USER-XFIGHTER  │  USER-XFIGHTER  │  USER-XFIGHTER  │ 1. User Chain  │
+│     APP         │     APP         │     APP         │    sends       │
+│                 │                 │                 │    RecordScore │
+│ - Asset mgmt    │ - Asset mgmt    │ - Asset mgmt    │ 2. Xfighter    │
+│ - Bet processing│ - Bet processing│ - Bet processing│    receives &  │
+│ - Transaction   │ - Transaction   │ - Transaction   │    processes   │
+│   history       │   history       │   history       │ 3. Leaderboard │
+│ - Battle auth   │ - Battle auth   │ - Battle auth   │    updates     │
+└─────────────────┴─────────────────┴─────────────────┴────────────────┘
 ```
 ## Real-Time Gaming Flow 
 ```text
@@ -119,6 +130,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
