@@ -45,22 +45,17 @@ After 15-20 minutes, system will be ready.
 **Core Architecture**
 - Xfighter-Leaderboard Integration - Cross-app real-time communication
 - Real-time Ranking System - Dynamic score calculation & cross-chain queries
-- Enhanced Multi-Queue Architecture - 150 high-priority + 500 low-priority slots
+- Enhanced Multi-Queue Architecture - 150 high-priority + 500 low-priority slots → Optimized large request throughput
+- Enhanced Monitoring & Recovery - Real-time queue metrics, detailed logging, and full state restoration
 
 **Advanced Tournament System**
 - Leaderboard Snapshot & Deterministic Bracket Generation
-- Progressive Rounds: Quarterfinals → Semifinals → Finals
-- Dedicated `recordTournamentScore` operations
+- Progressive Rounds: Quarterfinals → Semifinals → Finals & Dedicated `recordTournamentScore` operations
 
 **Gameplay & Social Features**
 - Multiplatform Support (Windows & macOS)
 - Friend System & New Hero Keylsey
 - Normal & Ranked competitive modes
-
-**Performance & Stability**
-- +500% Throughput - Optimized multi-queue architecture vs single-queue models
-- Optimized Resource Usage - Two workers per queue with ~4% CPU utilization
-- Enhanced Monitoring & Recovery - Real-time queue metrics, detailed logging, and full state restoration
 
 ### Wave 3 — In Progress:
 - User Chain deployment - Deploy USER-XFIGHTER apps
@@ -130,6 +125,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
