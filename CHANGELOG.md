@@ -1,13 +1,5 @@
 ## Development Roadmap
-
-| Wave | Focus | Status |
-|------|--------|--------|
-| **Wave 1** | MVP Foundation: Core Gameplay, On-chain Integration | ✅ Complete |
-| **Wave 2** | Multiplatform Support, Friend System, Hero System, Normal/Rank Modes | ✅ Complete |
-| **Wave 3** | Tournament Expansion, User Chains & Cross-chain Betting | 🔄 In Progress |
-| **Wave 4** | Metaverse Lobby, Prediction Bet System & Cross-chain Asset Management  | 🔄 In Progress |
-| **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
-| **Wave 6** | Full Metaverse: Decentralization & Social Features | ⏳ Planned |
+[README.md](https://github.com/2703roy/LineraOrchestrator_XFighterZone/blob/main/README.md).
 
 # Changelog
 
@@ -38,6 +30,7 @@ All notable changes to this project will be documented in this file.
 - Cross-chain Battle Flow - User Chain → Publisher Chain messaging pipeline
 - Asset Management System - User wallet integration & bet processing
 - Battle Authentication - Secure chain-to-chain verification protocols
+
 
 
 
