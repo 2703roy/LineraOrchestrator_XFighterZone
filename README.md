@@ -43,15 +43,19 @@ After 15-20 minutes, system will be ready.
 
 ### Wave 2 — Major Upgrades:
 **Core Architecture**
-- Xfighter-Leaderboard Integration - Cross-app communication for real-time data flow
+- Xfighter-Leaderboard Integration - Cross-app real-time communication
 - Real-time Ranking System - Dynamic score calculation & cross-chain queries
-- Tournament Infrastructure - Ready for user chain deployment with battle result processing
-- Enhanced Multi-Queue Architecture - Dual priority queues (150 high-priority Open Match Chain slots, 500 low-priority Submit Match slots)
+- Enhanced Multi-Queue Architecture - 150 high-priority + 500 low-priority slots
 
 **Advanced Tournament System**
-- Leaderboard Snapshot & Deterministic Bracket Generation - Ensures fair, reproducible matchups
-- Progressive Tournament Rounds - Quarterfinals → Semifinals → Finals progression
-- Dedicated Tournament Operations - recordTournamentScore mutations for precise state management
+- Leaderboard Snapshot & Deterministic Bracket Generation
+- Progressive Rounds: Quarterfinals → Semifinals → Finals
+- Dedicated `recordTournamentScore` operations
+
+**Gameplay & Social Features**
+- Multiplatform Support (Windows & macOS)
+- Friend System & New Hero Keylsey
+- Normal & Ranked competitive modes
 
 **Performance & Stability**
 - +500% Throughput - Optimized multi-queue architecture vs single-queue models
@@ -126,6 +130,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
