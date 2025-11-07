@@ -41,7 +41,7 @@ After 15-20 minutes, system will be ready.
 | **Wave 5** | Marketplace, Quest System & Advanced Prediction Pools | ⏳ Planned |
 | **Wave 6** | Full Metaverse: Decentralization & Social Features | ⏳ Planned |
 
-## Wave 2 — Major Upgrades:
+### Wave 2 — Major Upgrades:
 **Core Architecture**
 - Xfighter-Leaderboard Integration - Cross-app communication for real-time data flow
 - Real-time Ranking System - Dynamic score calculation & cross-chain queries
@@ -124,6 +124,7 @@ Unity Client → Game Server → Orchestrator API → Linera Microchains (Rust W
 ## 📞 Support
 **Team:** Roystudios / **Discord:** @roycrypto  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
