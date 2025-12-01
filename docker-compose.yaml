@@ -1,0 +1,72 @@
+﻿services:
+  #========================= LineraOrchestrator ===========================
+  linera-orchestrator:
+    container_name: linera-orchestrator
+    build:
+      context: ./LineraOrchestrator
+      dockerfile: Dockerfile
+    ports:
+      - "5290:5290"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_URLS=http://+:5290
+      - LINERA_DOCKER_MODE=true
+    restart: unless-stopped
+
+  #========================= ServerLobby ===============================
+  serverlobby:
+    container_name: server-lobby
+    build:
+      context: ./ServerLobby
+      dockerfile: Dockerfile
+    ports:
+      - "1111:1111"
+      - "1111:1111/udp"
+      - "10011-10100:10011-10100"
+      - "10011-10100:10011-10100/udp"
+    volumes:
+      - ./ServerLobby/server_data:/opt/serverLobby/data
+      - /tmp:/tmp:rw
+    environment:
+      - ORCHESTRATOR_URL=http://linera-orchestrator:5290/linera
+      - ORCHESTRATOR_ENV=docker
+    restart: unless-stopped
+    privileged: true
+
+  #========================= Frontend ===============================
+  webgl_frontend:
+    build:
+      context: ./ClientFrontend
+      dockerfile: Docker/Dockerfile
+    container_name: webgl_frontend
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+  #========================= ServerTournament ===============================
+  servertournament:
+    build:
+      context: ./ServerTournament
+      dockerfile: Dockerfile
+    ports:
+      - "18124:18124"
+      - "10000-10010:10000-10010"
+      - "10000-10010:10000-10010/udp"
+    volumes:
+      - ./ServerTournament/server_data:/opt/serverTournament/data
+      - /tmp:/tmp:rw
+    environment:
+      - ORCHESTRATOR_URL=http://linera-orchestrator:5290/linera
+      - ORCHESTRATOR_ENV=docker
+    restart: unless-stopped
+    privileged: true
+
+  #========================= Admin Webgl Frontend ===============================
+  admin_webgl_frontend:
+    build:
+      context: ./AdminTournamentFrontend
+      dockerfile: Docker/Dockerfile
+    container_name: admin_webgl_frontend
+    ports:
+      - "5174:80"
+    restart: unless-stopped
