@@ -43,7 +43,8 @@ RUN which linera && which linera-storage-server && linera --version
 COPY . .
 
 # Build .NET project
-RUN dotnet build -c Debug
+RUN dotnet restore LineraOrchestrator.csproj
+RUN dotnet build LineraOrchestrator.csproj -c Debug
 
 RUN chmod +x /build/conwaystartup.sh
 
