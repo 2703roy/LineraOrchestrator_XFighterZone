@@ -1,0 +1,182 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\controllers\\lineracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:controllers\\lineracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\leaderboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\leaderboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\lineraorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\lineraorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\tournamentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\tournamentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\friendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\friendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\matchchainservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\matchchainservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\lineraclirunner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\lineraclirunner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\environmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\environmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|d:\\workspace\\test\\lineraorchestrator_xfighterzone\\lineraorchestrator\\services\\bettingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED5DBDB-B7F4-E2A7-325F-3B0756829177}|LineraOrchestrator.csproj|solutionrelative:services\\bettingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LineraOrchestratorService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LineraOrchestratorService.cs",
+              "RelativeDocumentMoniker": "Services\\LineraOrchestratorService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LineraOrchestratorService.cs",
+              "RelativeToolTip": "Services\\LineraOrchestratorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T16:02:13.507Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TournamentService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\TournamentService.cs",
+              "RelativeDocumentMoniker": "Services\\TournamentService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\TournamentService.cs",
+              "RelativeToolTip": "Services\\TournamentService.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAIwJoAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T10:48:53.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FriendService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\FriendService.cs",
+              "RelativeDocumentMoniker": "Services\\FriendService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\FriendService.cs",
+              "RelativeToolTip": "Services\\FriendService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAjwIMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T21:17:23.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LeaderboardService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LeaderboardService.cs",
+              "RelativeDocumentMoniker": "Services\\LeaderboardService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LeaderboardService.cs",
+              "RelativeToolTip": "Services\\LeaderboardService.cs",
+              "ViewState": "AgIAABMBAAAAAAAAAAAWwDUBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:47:10.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAIwEQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T20:40:17.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LineraController.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Controllers\\LineraController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LineraController.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Controllers\\LineraController.cs",
+              "RelativeToolTip": "Controllers\\LineraController.cs",
+              "ViewState": "AgIAAHUBAAAAAAAAAAAQwIABAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T17:33:53.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MatchChainService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\MatchChainService.cs",
+              "RelativeDocumentMoniker": "Services\\MatchChainService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\MatchChainService.cs",
+              "RelativeToolTip": "Services\\MatchChainService.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAIA8wKAAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T22:46:16.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LineraCliRunner.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LineraCliRunner.cs",
+              "RelativeDocumentMoniker": "Services\\LineraCliRunner.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\LineraCliRunner.cs",
+              "RelativeToolTip": "Services\\LineraCliRunner.cs",
+              "ViewState": "AgIAABwCAAAAAAAAAAAwwEECAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T13:29:28.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EnvironmentService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\EnvironmentService.cs",
+              "RelativeDocumentMoniker": "Services\\EnvironmentService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\EnvironmentService.cs",
+              "RelativeToolTip": "Services\\EnvironmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T11:32:34.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BettingService.cs",
+              "DocumentMoniker": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\BettingService.cs",
+              "RelativeDocumentMoniker": "Services\\BettingService.cs",
+              "ToolTip": "D:\\workspace\\Test\\LineraOrchestrator_XFighterZone\\LineraOrchestrator\\Services\\BettingService.cs",
+              "RelativeToolTip": "Services\\BettingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T11:36:38.89Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

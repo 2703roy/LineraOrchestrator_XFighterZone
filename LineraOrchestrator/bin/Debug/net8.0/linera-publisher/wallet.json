@@ -1,0 +1,638 @@
+{
+  "chains": {
+    "07db9ad3cf3cc818ed1d5ce543f0889420209100aef2b22795a6409fe02d97fa": {
+      "chain_id": "07db9ad3cf3cc818ed1d5ce543f0889420209100aef2b22795a6409fe02d97fa",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "9be828bd8a6ebb1d524be0e12917647dc692995425bb55f3b7de637d6099279a",
+      "timestamp": 1764534123454160,
+      "next_block_height": 102,
+      "pending_proposal": null
+    },
+    "1b9b3731e44a9644301746953dcb747619c43d6bb8f64d79684e38cc125fb4cb": {
+      "chain_id": "1b9b3731e44a9644301746953dcb747619c43d6bb8f64d79684e38cc125fb4cb",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "db09523a1faabac6038a4e40eb0d305804cf6f3332f55f6bab1452cb142cedf3",
+      "timestamp": 1764533002377953,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "1cb428a2af3a43d3c105601fcf73896bb95fbaede265c4d61c9bdf995c88cae6": {
+      "chain_id": "1cb428a2af3a43d3c105601fcf73896bb95fbaede265c4d61c9bdf995c88cae6",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "31c1ce2f3dcd080a25af080c1d96c09d3e1d2ff06c562916f009cb86b6243020",
+      "timestamp": 1764533014957876,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "4020e57a9a2f729568838b91ac813e65ccb7131300c628b0ed19b55264db9665": {
+      "chain_id": "4020e57a9a2f729568838b91ac813e65ccb7131300c628b0ed19b55264db9665",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "30fab0af2f5c35c9442ec0936f7df98a6f16cf94eae40e374e4e49468756845c",
+      "timestamp": 1764534122818750,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "48fd2935b6fe83711201c34dac00b67d8138b669e8efaca9f0ba88df8e07df9e": {
+      "chain_id": "48fd2935b6fe83711201c34dac00b67d8138b669e8efaca9f0ba88df8e07df9e",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "c2115e8d1fd9bc062ad6fce2589f5fefabcda45e49c538af608dcbea73f5cf6a",
+      "timestamp": 1764533514861606,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "52bb080b3c8eb27be78833dab6998bedb8bb6ed1547e745f3644d4d42092cd7f": {
+      "chain_id": "52bb080b3c8eb27be78833dab6998bedb8bb6ed1547e745f3644d4d42092cd7f",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "fb0c313e5cd1a1aefd79dfc50edd65173cfc61a8bcf379ae7cedfd2ac57a93cd",
+      "timestamp": 1764534102352011,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "53d004252055f324c262c176e4571c98a4fee71393b7ecad299dfc47a6adf0ea": {
+      "chain_id": "53d004252055f324c262c176e4571c98a4fee71393b7ecad299dfc47a6adf0ea",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "42131b1000df78946dde12864cfd7927e86cccedfe318e6e589d739dacf9c790",
+      "timestamp": 1764533524498862,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "5a3af1ae4f303007b6e9d6aa6f7e800e2df3f761167202f08106f5609ff10e38": {
+      "chain_id": "5a3af1ae4f303007b6e9d6aa6f7e800e2df3f761167202f08106f5609ff10e38",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "bf51e2ac6c0d8bc69ce33a2df27b3c6049dadf1f0d66e3467a845c6d6fdbe304",
+      "timestamp": 1764534112709226,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "7fd1b4a7453929b416c8444d4ec59dc21f30b5b3e88c2271260efc1d369d99b9": {
+      "chain_id": "7fd1b4a7453929b416c8444d4ec59dc21f30b5b3e88c2271260efc1d369d99b9",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "cdf127fb5c4578e033c07377fb19ee72b474ab5a7419000c62984dfe9ad26447",
+      "timestamp": 1764532857817649,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "8a55e492fed5cb7f172eb8cb0725d0e0833804b24fb04cf197f7b289c1027a42": {
+      "chain_id": "8a55e492fed5cb7f172eb8cb0725d0e0833804b24fb04cf197f7b289c1027a42",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "e44249b6d47c6991fee91a70fe85da48753f27a8f5e56cad4f12f83cd9256d34",
+      "timestamp": 1764532879601856,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "8fd4233c5d03554f87d47a711cf70619727ca3d148353446cab81fb56922c9b7": {
+      "chain_id": "8fd4233c5d03554f87d47a711cf70619727ca3d148353446cab81fb56922c9b7",
+      "owner": null,
+      "block_hash": "15d61c0bb67607a0c0a38d41595e478d53bfb327e2c5c731b90e2aa5d1dc3a13",
+      "timestamp": 1764387133363217,
+      "next_block_height": 50,
+      "pending_proposal": null
+    },
+    "9085e9abe8d65209617ea34f9acf6021d323803a73e736da027483389fe02f62": {
+      "chain_id": "9085e9abe8d65209617ea34f9acf6021d323803a73e736da027483389fe02f62",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "9a707d7a7d762e520174f2b9be2ccc5b25b318d5fee317ea105875b12be000c2",
+      "timestamp": 1764533534861703,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "947e4ceff33e6eb06f16f671e6f2347aeb4dff2a852ea91546fa97c88e6619d8": {
+      "chain_id": "947e4ceff33e6eb06f16f671e6f2347aeb4dff2a852ea91546fa97c88e6619d8",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "c27a27a319c9dd7c7079a0e1a7f9eed97d4f3d9da1054eb80244f2593a3f004d",
+      "timestamp": 1764533971799230,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "94dbfac5ac0cf28085fe84b505a9bdf95af29bd99d6209a03d546cd773da6a40": {
+      "chain_id": "94dbfac5ac0cf28085fe84b505a9bdf95af29bd99d6209a03d546cd773da6a40",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "a01325ea24efebab7992186637930aa18c49b21f1c8f1578f260e4bb29336711",
+      "timestamp": 1764533994162032,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "9b53bf305b16ce3be3601b86d7d8138e72ec59f94ffb67ff1dfac256309bd401": {
+      "chain_id": "9b53bf305b16ce3be3601b86d7d8138e72ec59f94ffb67ff1dfac256309bd401",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "249720f2e7b3bfd8caa41551ef88a18a5cbcca4ad8e9447dab8c1c94fcf19e8e",
+      "timestamp": 1764533982442047,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "ade6ea0dfcc1890b84c62b118dd3e15f30229690cfc91a38ae1a97c08addc700": {
+      "chain_id": "ade6ea0dfcc1890b84c62b118dd3e15f30229690cfc91a38ae1a97c08addc700",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "97702275c5f9659645735580f23d09f6be0c981f78add81dfd94162a06c2667d",
+      "timestamp": 1764534061737860,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "c610d6982518422e87b2e5a141a3f0e5ce4febdd0228e3a12c6c68f84b16dcc9": {
+      "chain_id": "c610d6982518422e87b2e5a141a3f0e5ce4febdd0228e3a12c6c68f84b16dcc9",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "0de7ed7d9f3b758a66a324542f321487da0364c10b546c67a08ecb7de4d155ce",
+      "timestamp": 1764532844714497,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "d316cc015f2eb91c5a05abd4cd52bf9c87259935d9de2c269d4966178b3a784b": {
+      "chain_id": "d316cc015f2eb91c5a05abd4cd52bf9c87259935d9de2c269d4966178b3a784b",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "6f8a999ffae4b2d587dbb06220212a5a12e1c0c783e7c421555b75e77c46f7ce",
+      "timestamp": 1764533027875940,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "ec2c862ddf334fc4f2583e870295233419df1957d43b7dd1bb7b42707ad9487f": {
+      "chain_id": "ec2c862ddf334fc4f2583e870295233419df1957d43b7dd1bb7b42707ad9487f",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "0b9cce11ce072057f71ea5307cd1d3de3cccadbdd05b344d7d3ae15906856168",
+      "timestamp": 1764533962088282,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "ec572138b6ff96fde8409a7d79717cba3ca7fd71071536a0bfda76fe47ae5ffa": {
+      "chain_id": "ec572138b6ff96fde8409a7d79717cba3ca7fd71071536a0bfda76fe47ae5ffa",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "5b2b3fa2695ee56d2685ca8af578883f118283e1f35793d732071d0889406967",
+      "timestamp": 1764532989633054,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "f57e1561f48def2f50bf62716a2af67db6797bb1f8d886976e550ec8d4331016": {
+      "chain_id": "f57e1561f48def2f50bf62716a2af67db6797bb1f8d886976e550ec8d4331016",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "49d0ef840a2dd4e05464d72ba679b1d4e8161423a001ac4d9d79d059eb1c8338",
+      "timestamp": 1764533544566202,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "fa4c4107dcf1ffc80ada76a618aa128b675450e79ddfbf561ffd396a5b739ab5": {
+      "chain_id": "fa4c4107dcf1ffc80ada76a618aa128b675450e79ddfbf561ffd396a5b739ab5",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": "5471c787cae62bcc4c2a1f5b3d9412a20ffdf21cd691f637c33a94004d72c9d5",
+      "timestamp": 1764532831847827,
+      "next_block_height": 1,
+      "pending_proposal": null
+    },
+    "ffc9e685f37660322a49fd0e93893f7baa8e5b349cd759cecce9207162cbc5a1": {
+      "chain_id": "ffc9e685f37660322a49fd0e93893f7baa8e5b349cd759cecce9207162cbc5a1",
+      "owner": "0xede586aac1292c5693246d3f3d6b8d246d616df465293a1ddea105782bd16382",
+      "block_hash": null,
+      "timestamp": 1764534086806176,
+      "next_block_height": 0,
+      "pending_proposal": null
+    }
+  },
+  "default": "07db9ad3cf3cc818ed1d5ce543f0889420209100aef2b22795a6409fe02d97fa",
+  "genesis_config": {
+    "committee": {
+      "validators": {
+        "0332908f26b29cff419ad89f1c599a3402d4e2f27865553011d25cf081896eeb31": {
+          "network_address": "grpcs:validator-3.testnet-conway.linera.net:443",
+          "votes": 100,
+          "account_public_key": {
+            "Ed25519": "ed865d4cc2216c8655dffa249258fec224900f9c41eae06cad11c67d91a046fa"
+          }
+        },
+        "02585a794a224016cde228c96a33ade5c00dfec66868e2bc7649acc687db591fc5": {
+          "network_address": "grpcs:validator-4.testnet-conway.linera.net:443",
+          "votes": 100,
+          "account_public_key": {
+            "Ed25519": "83105f57a0209c3836fbf2c96c363de766182bd6a490e1ad54317787d1951254"
+          }
+        },
+        "03960d2076f569a75274725790650d89561cb09d68cbcd8ef46e1bd3fcf0069a71": {
+          "network_address": "grpcs:validator-1.testnet-conway.linera.net:443",
+          "votes": 100,
+          "account_public_key": {
+            "Ed25519": "cef0df4445b8d8da59409765e9732e64b0d9d7f37b47917b7c77679bbf064f81"
+          }
+        },
+        "02fcd6ab386c2384e08ffa4f638df149b75cfd5f2463811a4a2dfa47b319f7bc49": {
+          "network_address": "grpcs:validator-2.testnet-conway.linera.net:443",
+          "votes": 100,
+          "account_public_key": {
+            "Ed25519": "00964f8833b705708a0e5f11e400686fa2b13933f2345f652f6180c959523113"
+          }
+        }
+      },
+      "total_votes": 400,
+      "quorum_threshold": 267,
+      "validity_threshold": 134,
+      "policy": {
+        "wasm_fuel_unit": "0.00000001",
+        "evm_fuel_unit": "0.00000001",
+        "read_operation": "0.00001",
+        "write_operation": "0.00002",
+        "byte_runtime": "0.000000001",
+        "byte_read": "0.00000001",
+        "byte_written": "0.0000001",
+        "blob_read": "0.0000001",
+        "blob_published": "0.000001",
+        "blob_byte_read": "0.00000001",
+        "blob_byte_published": "0.0000001",
+        "byte_stored": "0.00000001",
+        "operation": "0.00001",
+        "operation_byte": "0.00000001",
+        "message": "0.00001",
+        "message_byte": "0.0000001",
+        "service_as_oracle_query": "0.01",
+        "http_request": "0.00005",
+        "maximum_wasm_fuel_per_block": 100000000,
+        "maximum_evm_fuel_per_block": 100000000,
+        "maximum_service_oracle_execution_ms": 10000,
+        "maximum_block_size": 1000000,
+        "maximum_bytecode_size": 10000000,
+        "maximum_blob_size": 1000000,
+        "maximum_published_blobs": 10,
+        "maximum_block_proposal_size": 13000000,
+        "maximum_bytes_read_per_block": 100000000,
+        "maximum_bytes_written_per_block": 10000000,
+        "maximum_oracle_response_bytes": 10000,
+        "maximum_http_response_bytes": 10000,
+        "http_request_timeout_ms": 20000,
+        "http_request_allow_list": []
+      }
+    },
+    "timestamp": 1755888091339336,
+    "chains": [
+      {
+        "origin": {
+          "Root": 0
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0xeffa4808706f6a789f4de4f148dd8b141858916f97541e0c9dd95e00846a4a9b": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 1
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x4747ed1c5b2484fc48d476f32bf4b47b09eb9a621cdee63fe37b743b3f461a3a": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 2
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0xd5adbb6cc6c80babeff63ea88ece5faa54543ed76cc93f913cb46e8560f9192d": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 3
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x6ba799e73fa7367758e828cbc96b2af9e5c0b45c4914c7ecfc014bb51c95f4d5": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 4
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0xc555fce94f5e1fde038337ba6f44e08a766694981ca99a543330da9208a6008d": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 5
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x5f621829724a20ab411d132e81148be77a9be3514c00a059fd731da88f45c410": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 6
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0xab54580e3485d30b54fdac808be0cf2ff762fe044a904c121f43ffb3d5e7407a": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 7
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0xd69bceffdff3073d1865b9034d390e8966314d64108b557c2b97c32c68e81a38": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 8
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x982160275678a54ca7c378c0623503b87d565c589f0b89561a491e63e4ff416b": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 9
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x18b9066a0f34e158b5c5709df48da4be001f5710115d0e6fe33665ba7a00d254": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      },
+      {
+        "origin": {
+          "Root": 10
+        },
+        "timestamp": 1755888091339336,
+        "config": {
+          "ownership": {
+            "super_owners": [],
+            "owners": {
+              "0x71b68e56b1ce4c1e2a3dc50371dc365a2db9c4b755efc19c3131937bac94c69c": 100
+            },
+            "multi_leader_rounds": 2,
+            "open_multi_leader_rounds": false,
+            "timeout_config": {
+              "fast_round_duration": null,
+              "base_timeout": 10000000,
+              "timeout_increment": 1000000,
+              "fallback_duration": 18446744073709551615
+            }
+          },
+          "epoch": "0",
+          "min_active_epoch": "0",
+          "max_active_epoch": "0",
+          "balance": "1000000000.",
+          "application_permissions": {
+            "execute_operations": null,
+            "mandatory_applications": [],
+            "close_chain": [],
+            "change_application_permissions": [],
+            "call_service_as_oracle": null,
+            "make_http_requests": null
+          }
+        }
+      }
+    ],
+    "network_name": "testnet-conway"
+  }
+}
