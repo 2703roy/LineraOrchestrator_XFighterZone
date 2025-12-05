@@ -8,16 +8,14 @@
 ### ⚠️ Important Notice for Judges
 All large frontend game client/server files are **not included in the GitHub repository** due to size limits.  
 Please download all build `.zip` files if possible. They are provided in the **Release section**:
-- [AdminTournamentFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/buildathon-2025)  
-- [ClientFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/buildathon-2025)  
-- [ServerLobby.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/buildathon-2025)  
-- [ServerTournament.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/buildathon-2025)  
+- [ClientFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Test-Docker)  
+- [ServerLobby.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Test-Docker)  
 
 **Instructions:**  
 1. Download and unzip each file in the root directory of the project.
 2. After extraction, your folder structure should match the repository structure.
-3. Run `chmod +x start-docker.sh` and then `./start-docker.sh` to launch the full system locally.  
-> This ensures that `start-docker.sh` can find all necessary files and run the complete XFighterZone system.
+3. Run `chmod +x ./scripts/local-dev-start.sh` and then `./scripts/local-dev-start.sh` to launch the full system locally.  
+> This ensures that `./scripts/local-dev-start.sh` can find all necessary files and run the complete XFighterZone system.
 
 # 🚀 Deployment Environments
 ## A. Local Development Run with Docker
@@ -27,8 +25,8 @@ git clone https://github.com/2703roy/LineraOrchestrator_XFighterZone.git
 cd LineraOrchestrator_XFighterZone
 
 # Run script to complete system (LineraOrchestrator + Game Server)
-chmod +x start-docker.sh
-./start-docker.sh
+chmod +x ./scripts/local-dev-start.sh
+./scripts/local-dev-start.sh
 
 Wait until you see the following message in the logs:  
 XFighterZone Docker setup completed successfully!
@@ -260,6 +258,7 @@ Results are pushed back to Tournament App
 **Team:** Roystudios  
 **Discord:** `roycrypto`  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
