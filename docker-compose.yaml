@@ -1,7 +1,7 @@
 ﻿services:
-  #========================= LineraOrchestrator ===========================
   linera-orchestrator:
     container_name: linera-orchestrator
+    image: ${LINERA_IMAGE:-ghcr.io/yourorg/linera-orchestrator:latest}
     build:
       context: ./LineraOrchestrator
       dockerfile: Dockerfile
@@ -13,9 +13,9 @@
       - LINERA_DOCKER_MODE=true
     restart: unless-stopped
 
-  #========================= ServerLobby ===============================
   serverlobby:
     container_name: server-lobby
+    image: ${SERVERLOBBY_IMAGE:-ghcr.io/yourorg/server-lobby:latest}
     build:
       context: ./ServerLobby
       dockerfile: Dockerfile
@@ -33,18 +33,19 @@
     restart: unless-stopped
     privileged: true
 
-  #========================= Frontend ===============================
   webgl_frontend:
+    container_name: webgl_frontend
+    image: ${WEBGL_IMAGE:-ghcr.io/yourorg/webgl_frontend:latest}
     build:
       context: ./ClientFrontend
       dockerfile: Docker/Dockerfile
-    container_name: webgl_frontend
     ports:
       - "5173:80"
     restart: unless-stopped
 
-  #========================= ServerTournament ===============================
   servertournament:
+    container_name: servertournament
+    image: ${SERVERTOURN_IMAGE:-ghcr.io/yourorg/servertournament:latest}
     build:
       context: ./ServerTournament
       dockerfile: Dockerfile
@@ -61,12 +62,12 @@
     restart: unless-stopped
     privileged: true
 
-  #========================= Admin Webgl Frontend ===============================
   admin_webgl_frontend:
+    container_name: admin_webgl_frontend
+    image: ${ADMINWEBGL_IMAGE:-ghcr.io/yourorg/admin_webgl_frontend:latest}
     build:
       context: ./AdminTournamentFrontend
       dockerfile: Docker/Dockerfile
-    container_name: admin_webgl_frontend
     ports:
       - "5174:80"
     restart: unless-stopped

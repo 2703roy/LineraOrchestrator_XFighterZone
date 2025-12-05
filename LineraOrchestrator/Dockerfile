@@ -29,8 +29,8 @@ RUN rustup target add wasm32-unknown-unknown
 ENV RUSTFLAGS="-C linker=clang"
 
 # INSTALL LINERA
-RUN cargo install --locked linera-storage-service@0.15.5 \
- && cargo install --locked linera-service@0.15.5
+RUN cargo install --locked linera-storage-service@0.15.7 \
+ && cargo install --locked linera-service@0.15.7
 
 # Copy binaries to PATH
 RUN cp /root/.cargo/bin/linera* /usr/local/bin/ \

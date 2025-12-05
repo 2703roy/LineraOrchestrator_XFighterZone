@@ -2,18 +2,81 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Normalize line endings of this script (and re-exec under bash if needed).
-if command -v sed >/dev/null 2>&1 && grep -q $'\r' "$0" 2>/dev/null; then
-    sed -i 's/\r$//' "$0" || true
-    exec bash "$0" "$@"
+# ---------------- compose detection + wrappers ----------------
+COMPOSE_CMD=""
+detect_compose() {
+  # Try "docker compose" plugin first (preferred)
+  if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+    COMPOSE_CMD="docker compose"
+    return 0
+  fi
+  # Fallback to legacy docker-compose
+  if command -v docker-compose >/dev/null 2>&1 && docker-compose version >/dev/null 2>&1; then
+    COMPOSE_CMD="docker-compose"
+    return 0
+  fi
+  return 1
+}
+
+if ! detect_compose; then
+  cat >&2 <<'ERR'
+ERROR: neither 'docker compose' (plugin) nor 'docker-compose' (legacy) are available.
+Install Docker Compose plugin or legacy docker-compose.
+
+On Ubuntu/WSL you can install plugin:
+  sudo apt-get update && sudo apt-get install -y docker-compose-plugin
+
+Or legacy:
+  sudo apt-get install -y docker-compose
+ERR
+  exit 1
 fi
 
+# wrapper call: careful to invoke command with/without space
+compose_run() {
+  if [ "$COMPOSE_CMD" = "docker compose" ]; then
+    docker compose "$@"
+  else
+    docker-compose "$@"
+  fi
+}
+compose_build() {
+  PLATFORM=${PLATFORM:-} compose_run build "$@"
+}
+compose_up_detached() {
+  PLATFORM=${PLATFORM:-} compose_run up -d --remove-orphans "$@"
+}
+compose_down() {
+  PLATFORM=${PLATFORM:-} compose_run down "$@"
+}
+
+# ---------------- other helpers ----------------
 normalize_to_lf() {
     local f="$1"
     if [ -f "$f" ] && grep -q $'\r' "$f" 2>/dev/null; then
         sed -i 's/\r$//' "$f" || true
     fi
 }
+
+# ---------------- host/platform detection ----------------
+HOST_ARCH="$(uname -m || true)"
+echo "Detected host architecture: $HOST_ARCH"
+
+export PLATFORM=${PLATFORM:-}
+echo "Using PLATFORM=${PLATFORM:-<auto>}"
+echo "Using PLATFORM=$PLATFORM"
+
+# report buildx if available
+if command -v docker >/dev/null 2>&1 && docker buildx version >/dev/null 2>&1; then
+  echo "Docker buildx available."
+fi
+
+# ---------------- normalize this script and tournament helper ----------------
+# re-exec if script has CRLF
+if command -v sed >/dev/null 2>&1 && grep -q $'\r' "$0" 2>/dev/null; then
+    sed -i 's/\r$//' "$0" || true
+    exec bash "$0" "$@"
+fi
 
 normalize_to_lf start-tournament.sh
 
@@ -24,28 +87,18 @@ mkdir -p LineraOrchestrator/data LineraOrchestrator/logs LineraOrchestrator/line
 rm -rf ServerLobby/server_data 2>/dev/null || true
 mkdir -p ServerLobby/server_data
 
-# Kiểm tra WASM files
-echo "Checking WASM files..."
-if [ -d "LineraOrchestrator/wasm" ] && compgen -G "LineraOrchestrator/wasm/*.wasm" >/dev/null; then
-    echo "WASM files found:"
-    ls -la LineraOrchestrator/wasm/*.wasm
-else
-    echo "ERROR: No WASM files found in ./LineraOrchestrator/wasm/"
-    exit 1
-fi
-
 # Dừng services cũ (không fail nếu chưa chạy)
-echo "Stopping existing services (docker-compose down)..."
-docker-compose down || true
+echo "Stopping existing services (compose down)..."
+compose_down || true
 
 echo "Building Docker images..."
-docker-compose build
+compose_build
 
 # ============================ LineraOrch ==============================
 start_linera_orch() {
     echo "=== LineraOrch: starting linera-orchestrator ==="
 
-    docker-compose up -d linera-orchestrator
+    PLATFORM=$PLATFORM compose_up_detached linera-orchestrator
 
     echo "Waiting for Linera-Orchestrator API to become ready..."
     until curl -fsS http://localhost:5290/health >/dev/null 2>&1; do
@@ -83,7 +136,7 @@ start_linera_orch() {
     if [ "$SETUP_SUCCESS" = false ]; then
         echo "Failed to setup Linera node after $MAX_RETRIES attempts"
         echo "===== Linera-Orchestrator logs ====="
-        docker-compose logs linera-orchestrator || true
+        PLATFORM=$PLATFORM compose_run logs linera-orchestrator || true
         return 1
     fi
 
@@ -94,16 +147,22 @@ start_linera_orch() {
 # ============================ ServerLobby ============================
 start_server_lobby() {
     echo "=== ServerLobby: starting server lobby ==="
-    docker-compose up -d serverlobby
+    PLATFORM=$PLATFORM compose_up_detached serverlobby
     echo "Final check - waiting for services to stabilize..."
     sleep 5
 
     # Kiểm tra service serverlobby có chạy không
-    if docker-compose ps --services --filter "status=running" | grep -qE '^serverlobby$'; then
+    if compose_run ps --services --filter "status=running" | grep -qE '^serverlobby$'; then
         echo "ServerLobby is running."
+        # report container arch for verification
+        CID=$(compose_run ps -q serverlobby || true)
+        if [ -n "$CID" ]; then
+          echo "serverlobby container id: $CID"
+          docker exec "$CID" uname -m || true
+        fi
         return 0
     else
-        echo "Some services may have issues, check logs: docker-compose logs"
+        echo "Some services may have issues, check logs: compose logs"
         return 1
     fi
 }
@@ -146,11 +205,12 @@ if start_linera_orch; then
     if start_server_lobby; then
         echo "ALL DONE: LineraOrchestrator + ServerLobby started."
         echo "XFighterZone Docker setup completed successfully!"
-        docker-compose up -d webgl_frontend
+        PLATFORM=$PLATFORM compose_up_detached webgl_frontend
         setup_tournament
         exit 0
     else
         echo "ERROR: ServerLobby failed to start correctly."
+        PLATFORM=$PLATFORM compose_run logs serverlobby || true
         exit 1
     fi
 else
