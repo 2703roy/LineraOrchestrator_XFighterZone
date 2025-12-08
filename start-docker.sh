@@ -80,6 +80,91 @@ fi
 
 normalize_to_lf start-tournament.sh
 
+# ---------- Registry prefetch + auto-fix ----------
+ensure_registry_access() {
+  local MAX_TRIES=3
+  local DOCKER_CFG="$HOME/.docker/config.json"
+  local -a IMAGES=()
+
+  # collect FROM images from Dockerfiles in repo root (simple heuristic)
+  while IFS= read -r line; do
+    img=$(printf '%s' "$line" | awk '{print $2}')
+    [ -n "$img" ] && IMAGES+=("$img")
+  done < <(grep -hR --line-number -E '^FROM[[:space:]]+' --exclude-dir=.git --binary-files=without-match . 2>/dev/null || true)
+
+  # collect image: entries from docker-compose*.yml
+  while IFS= read -r line; do
+    img=$(echo "$line" | sed -E 's/^[[:space:]]*image:[[:space:]]*//')
+    [ -n "$img" ] && IMAGES+=("$img")
+  done < <(grep -hR -E '^[[:space:]]*image:[[:space:]]*' docker-compose*.yml 2>/dev/null || true)
+
+  # always include common expected bases to be safe
+  IMAGES+=("ubuntu:24.04" "nginx:stable-alpine")
+
+  # dedupe preserving order
+  IFS=$'\n' read -r -d '' -a IMAGES <<< "$(printf "%s\n" "${IMAGES[@]}" | awk '!seen[$0]++')" || true
+
+  pull_with_fix() {
+    local image="$1"
+    local tries=1
+    while [ $tries -le $MAX_TRIES ]; do
+      echo "Pull attempt $tries for $image"
+      if docker pull "$image" >/dev/null 2>&1; then
+        echo "Pulled $image"
+        return 0
+      fi
+      out=$(docker pull "$image" 2>&1 || true)
+      if printf '%s' "$out" | grep -qi "error getting credentials"; then
+        echo "Credential helper failure detected for $image."
+        if [ -f "$DOCKER_CFG" ]; then
+          bak="$DOCKER_CFG.bak.$(date +%s)"
+          cp "$DOCKER_CFG" "$bak"
+          echo "Backed up docker config to $bak"
+          if command -v jq >/dev/null 2>&1; then
+            jq 'del(.credsStore, .credHelpers)' "$bak" > "$DOCKER_CFG.tmp" && mv "$DOCKER_CFG.tmp" "$DOCKER_CFG"
+          else
+            # fallback python edit
+            python3 - <<PY >/dev/null 2>&1 || true
+import json,os
+p=os.path.expanduser("$DOCKER_CFG")
+b=p+".bak"
+j=json.load(open(b))
+j.pop('credsStore',None); j.pop('credHelpers',None)
+open(p,'w').write(json.dumps(j))
+PY
+          fi
+          echo "Temporarily removed credsStore/credHelpers from $DOCKER_CFG."
+          # retry immediate
+          if docker pull "$image" >/dev/null 2>&1; then
+            echo "Pull succeeded for $image after fixing config."
+            return 0
+          else
+            echo "Pull still failing after config tweak; will retry loop."
+          fi
+        else
+          echo "No $DOCKER_CFG found to fix."
+        fi
+      else
+        echo "Pull failed for $image: $out"
+      fi
+      tries=$((tries+1))
+      sleep 2
+    done
+    return 1
+  }
+
+  for img in "${IMAGES[@]}"; do
+    [ -z "$img" ] && continue
+    echo "Prefetching base image: $img"
+    if ! pull_with_fix "$img"; then
+      echo "Warning: failed to prefetch $img (will continue, build may still fail)."
+    fi
+  done
+
+  return 0
+}
+# ---------- end registry prefetch ----------
+
 # ============================ Common setup ============================
 echo "=== Common setup ==="
 echo "Creating directories..."
@@ -91,8 +176,31 @@ mkdir -p ServerLobby/server_data
 echo "Stopping existing services (compose down)..."
 compose_down || true
 
-echo "Building Docker images..."
-compose_build
+# Registry pre-check + prefetch images and fix credential helper issues if detected
+echo "=== Registry pre-check: ensure base image available / creds ok ==="
+ensure_registry_access || {
+  echo "Registry prefetch reported issues; attempting docker-compose pull --ignore-pull-failures"
+  compose_run pull --ignore-pull-failures || true
+}
+
+# Build images with retries (single build invocation)
+echo "Building Docker images (compose build with retries)..."
+BUILD_RETRIES=3
+i=1
+until [ $i -gt $BUILD_RETRIES ]; do
+  echo "Compose build attempt $i/$BUILD_RETRIES..."
+  if compose_build; then
+    echo "Compose build succeeded."
+    break
+  fi
+  echo "Compose build failed on attempt $i; retrying..."
+  i=$((i+1))
+  sleep 2
+done
+if [ $i -gt $BUILD_RETRIES ]; then
+  echo "ERROR: compose build failed after $BUILD_RETRIES attempts."
+  exit 1
+fi
 
 # ============================ LineraOrch ==============================
 start_linera_orch() {
@@ -170,7 +278,10 @@ start_server_lobby() {
 # ============================ Tournament Setup ============================
 setup_tournament() {
     echo "=== Setting up tournament script ==="
-    rm -f start-tournament.sh
+    if [ -f start-tournament.sh ]; then
+        echo "start-tournament.sh already exists — skipping overwrite"
+        return 0
+    fi
 
     cat > start-tournament.sh <<'EOF'
 #!/usr/bin/env bash
