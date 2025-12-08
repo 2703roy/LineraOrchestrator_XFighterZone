@@ -8,8 +8,10 @@
 ### ⚠️ Important Notice for Judges - Check Docker
 All large frontend game client/server files are **not included in the GitHub repository** due to size limits.  
 Please download all build `.zip` files if possible. They are provided in the **Release section**:
-- [ClientFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Test-Docker)  
-- [ServerLobby.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Test-Docker)  
+- [ClientFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Docker-Multiplatform)  
+- [ServerLobby.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Docker-Multiplatform)
+- [AdminTournamentFrontend.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Docker-Multiplatform)
+- [ServerTournament.zip](https://github.com/2703roy/LineraOrchestrator_XFighterZone/releases/tag/Docker-Multiplatform)  
 
 **Instructions:**  
 1. Download and unzip each file in the root directory of the project.
@@ -258,6 +260,7 @@ Results are pushed back to Tournament App
 **Team:** Roystudios  
 **Discord:** `roycrypto`  
 **Author:** [roycrypto](https://x.com/AriesLLC1)
+
 
 
 
